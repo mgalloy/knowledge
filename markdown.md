@@ -13,6 +13,7 @@ used in IPython Notebook and Github.
 
 * [Markdown Basics](http://markdown-guide.readthedocs.org/en/latest/basics.html)
 [readthedocs.org]
+* [GitHub flavored Markdown](https://help.github.com/articles/github-flavored-markdown/) [github.com]
 * A [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet),
 of sorts
 [github.com]
