@@ -12,7 +12,7 @@ Use `ant`:
 	$ ant build
 	$ ant test
 
-# Writing a buildfile
+## Writing a buildfile
 
 Instructions are given [here](https://ant.apache.org/manual/using.html).
 

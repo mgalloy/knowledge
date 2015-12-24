@@ -1,8 +1,17 @@
-# Notes on using CentOS
+# CentOS (and siwenna)
 
-It's a bit different from Ubuntu.
+CentOS 6.6 is installed on ***siwenna***.
+```
+$ lsb_release -a
+LSB Version: :base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch
+Distributor ID: CentOS
+Description: CentOS release 6.6 (Final)
+Release: 6.6
+Codename: Final
+```
 
-CentOS 6.4 is installed on ***siwenna***.
+Note that there's some crossover with my
+[Linux](./linux.md) notes.
 
 ## Package manager
 
@@ -16,9 +25,11 @@ CentOS 6.4 is installed on ***siwenna***.
 ## Emacs
 
 Emacs isn't installed by default.
-Install with:
+I downloaded the source tarball, installed it to **~/local**,
+and added it to `PATH`:
 
-	$ sudo yum install emacs.x86_64
+    $ PATH=~/local/bin:$PATH
+
 
 ## Dev tools
 
@@ -50,9 +61,9 @@ Set the "-X" option to enable X forwarding:
 
 Remember how to call `scp`? Example for single file:
 
-	$ scp N3100.tif mapi8461@river.colorado.edu:/data/ftp/pub/users/mapi8461
+	$ scp N3100.tif mapi8888.colorado.edu:/data/ftp/pub/users/mapi8888
 
-Recursively copy a directory with the "-r" flag.
+Recursively copy a directory with the `-r` flag.
 
 Can't `scp` files into a directory requiring root permissions.
 
@@ -68,10 +79,10 @@ And set it to start on boot (see sshd above).
 
 Can now access [http://localhost](http://localhost).
 
-Tried to set up
-[http://localhost/~mapi8461](http://localhost/~mapi8461), but I'm
-getting a 403: Forbidden error. (I want to serve my pyjs examples from
-here.)  Solution: need to modify stoopid SELinux:
+Tried to set up my home directory, but I'm
+getting a `403: Forbidden` error. (I want to serve my `pyjs` examples from
+here.)
+Solution: need to modify stoopid SELinux:
 
 	# setsebool -P httpd_read_user_content=1 httpd_enable_homedirs=1
 
@@ -113,7 +124,7 @@ or follow [this article](https://www.digitalocean.com/community/tutorials/how-to
 
 ### CMake > 2.8
 
-[DAKOTA](./dakota.md) requires CMake 2.8.9 or higher.
+[Dakota](./dakota.md) requires CMake 2.8.9 or higher.
 
 I [downloaded](http://www.cmake.org/files/v2.8/) CMake 2.8.9 and installed with
 
@@ -130,7 +141,7 @@ I enabled the `rpmforge-extras` repo:
 
 	$ sudo yum-config-manager --enable rpmforge-extras
 
-and used it to install svn 1.7.
-It successfully removed svn 1.6,
+and used it to install version 1.7.
+It successfully removed 1.6,
 which is the CentOS default.
 

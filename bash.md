@@ -110,7 +110,8 @@ See [http://chrisgilligan.com/wordpress/chmod-recursive-files-only-directories-t
 
 ## Substitution with sed
 
-In all **.cca** files,
+By way of example,
+in all **.cca** files,
 locate the line with a path to a **.la** file
 and change the extension to **.so**:
 
@@ -191,7 +192,7 @@ For example,
 to copy the compiled WMT module from my development machine
 to my home directory on the webserver, use:
 
-	$ rsync -avz war mapi8461@river:~
+	$ rsync -avz war mapi8888@river:~
 
 `rsync` only copies the differences between the source and target directories.
 Further, with the `-z` flag,
@@ -223,7 +224,7 @@ From [commandlinefu.com](http://www.commandlinefu.com/commands/view/13697/pretty
     $ tr : '\n' <<< $PATH
 
 Works for any path variable.
-
+I made this into a personal library script, `showpath`.
 
 ## Modules
 
