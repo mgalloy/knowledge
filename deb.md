@@ -69,7 +69,7 @@ downloaded from the GNU FTP site.
    [this list](http://www.debian.org/doc/manuals/maint-guide/dreq.en.html)
    of required files that are built.)
 
-		$ dh_make -c mit -e mark.piper@colorado.edu -s -a
+		$ dh_make -c mit -e mapi8888@colorado.edu -s -a
 
    Many of the files are stubs, and will need to be edited afterward.
    For example, the **rules**:

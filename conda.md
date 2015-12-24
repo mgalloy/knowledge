@@ -1,15 +1,11 @@
 # Conda
 
-## Installing packages
+We use `conda` at CSDMS for all our Python needs.
+
+## Install, uninstall, and list packages
 
     conda install ipython
-	
-## Unistalling packages
-
     conda uninstall ipython
-
-## Listing installed packages
-
     conda list
 
 ## Search for packages to install
@@ -22,14 +18,14 @@ Fragments of package names can be used.
 
 (Perhaps this should be a separate note?)
 
-See [http://conda.pydata.org/docs/building/recipe.html],
+See http://conda.pydata.org/docs/building/recipe.html,
 and, from there,
-[http://conda.pydata.org/docs/build_tutorials/pkgs2.html].
+http://conda.pydata.org/docs/build_tutorials/pkgs2.html.
 
 Information on the [meta.yaml](http://conda.pydata.org/docs/building/meta-yaml.html) file.
 
 I also found good information at
-[http://conda-test.pydata.org/docs/build.html],
+http://conda-test.pydata.org/docs/build.html,
 including more detailed info on the **meta.yaml** file
 and patching.
 

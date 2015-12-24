@@ -1,4 +1,4 @@
-# CSDMS Notes
+# CSDMS
 
 ## BMI
 
@@ -19,7 +19,7 @@ View the beach cluster report at:
 
 Use ***beach-nfs*** for file transfers.
 
-	$ rsync foo mapi8461@beach-nfs:/scratch/mapi8461
+	$ rsync foo mapi8888@beach-nfs:/scratch/mapi8888
 
 The **/scratch** disk is directly connected to ***beach-nfs***
 and then NFS mounted to ***beach***.
@@ -48,9 +48,8 @@ to see the latest errors.
 
 ## FTP site
 
-FTP directory on ***river*** is **/data/ftp/pub/users/mapi8461**.
-Users can access this site here:
-[http://csdms.colorado.edu/pub/users/mapi8461/](http://csdms.colorado.edu/pub/users/mapi8461/).
+FTP directory on ***river*** is **/data/ftp/pub/users/mapi8888**.
+Users can access this site [here](http://csdms.colorado.edu/pub/users/mapi8888/).
 
 
 ## WMT client and server location
@@ -357,37 +356,3 @@ and edited them to use the new execution server path.
   ***beach*** in **/usr/local/dakota**.
 * I added **etc/wmt/environ.yaml** and modified it to use the paths in
   **wmt-env.sh**.
-
-
-## Obsolete
-
-The following notes may no longer be needed.
-
-### SVN repository
-
-To access the CSDMS repository (here checking out the cmtnext project):
-
-	$ svn checkout https://csdms.colorado.edu/svn/cmtnext
-
-Use my csdms login/passwd.
-View the contents of this project in the repo at
-[http://csdms.colorado.edu/trac/csdms/browser/CmtNext](http://csdms.colorado.edu/trac/csdms/browser/CmtNext)
-
-Or, better, use [ViewVC](http://www.viewvc.org/):
-[http://csdms.colorado.edu/viewvc/cmtnext/](http://csdms.colorado.edu/viewvc/cmtnext/).
-
-To import a project into the CSDMS repository, don't forget the
-stoopid project name. An example:
-
-	$ svn import JSNIParse \
-	> https://csdms.colorado.edu/svn/cmtnext/trunk/examples/JSNIParse
-
-I neglected to include the project name at the end of the repository
-URL, so the subdirs of the project got loaded into the examples/
-directory. (aargh!) I fixed this by importing a new root directory and
-moving the subdirs into it, like this:
-
-	$ svn mv \
-	> https://csdms.colorado.edu/svn/cmtnext/trunk/examples/war \
-	> https://csdms.colorado.edu/svn/cmtnext/trunk/examples/JSNIParse
-
