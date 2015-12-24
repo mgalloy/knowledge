@@ -1,6 +1,4 @@
-# Notes on Python
-
-These should be grouped better.
+# Python
 
 Style
 ------------------------------------------------------------------------------
@@ -13,6 +11,11 @@ Also:
 
 	>>> import this
 
+Check for style errors with `pep8`:
+
+    $ pep8 foo.py
+
+
 Program types
 ------------------------------------------------------------------------------
 
@@ -21,8 +24,10 @@ specified, Python returns `None`, the null value.
 
 Definition syntax:
 
-	def foo():
-		print('bar!')
+```python
+def foo():
+  print('bar!')
+```
 
 Calling syntax:
 

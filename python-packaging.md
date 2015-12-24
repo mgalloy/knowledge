@@ -1,4 +1,4 @@
-# Notes on Python packaging 
+# Python packaging 
 
 Packaging is complex. 
 
@@ -18,14 +18,15 @@ I think I did a good job with
 [csdms/dakota](https://github.com/csdms/dakota);
 maybe it can be my canonical reference.
 
-The standard call:
+An
+[example](https://docs.python.org/2/distutils/setupscript.html#installing-scripts)
+that shows how to include package data.
 
-	$ cd {package}
-	$ [sudo] python setup.py install
+Packages are installed to `{prefix}/lib/pythonX.Y/site-packages`;
+e.g., **/usr/local/lib/python2.7/site-packages/**.
 
-See other commands with:
 
-	$ python setup.py --help-commands
+## Virtualenv
 
 Installing
 [virtualenv](http://virtualenv.readthedocs.org/en/latest/virtualenv.html).
@@ -36,21 +37,16 @@ Virtualenv is really
 [the only way](http://stackoverflow.com/questions/11170827/how-tell-python-script-to-use-particular-version)
 to force a Python script to use a particular Python version.
 
-An
-[example](https://docs.python.org/2/distutils/setupscript.html#installing-scripts)
-that shows how to include package data.
 
-Packages are installed to `{prefix}/lib/pythonX.Y/site-packages`;
-e.g., **/usr/local/lib/python2.7/site-packages/**.
+## Setuptools
 
 Documentation for
 [setuptools](https://pythonhosted.org/setuptools/setuptools.html).
 
-## More commands
+The standard call to install a package:
 
-Uninstall with `pip`:
-
-	$ pip uninstall foo
+	$ cd {package}
+	$ [sudo] python setup.py install
 
 If I lack permissions to install
 in the distro's **site-packages** directory,
@@ -70,10 +66,23 @@ in **site-packages** instead of installing an egg:
 
 Can't use `pip` to uninstall a package installed with `develop`.
 
+See other commands with:
+
+	$ python setup.py --help-commands
+
+
+## Pip
+
+Uninstall with `pip`:
+
+	$ pip uninstall foo
+
 
 ## Namespace packages
 
 I'd like the software I develop at CSDMS to be under the `csdms` namespace.
+See [csdms/dakota](https://github.com/csdms/dakota)
+as an example.
 
 **References:**
 
