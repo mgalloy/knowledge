@@ -1,11 +1,11 @@
-# Notes on using Linux
+# Linux
 
 Notes from my years and years of using it.
 
-Note that there's some crossover with my
+There's some crossover here with my
 [bash](./bash.md) notes.
 
-## Get distro
+## Get distro info
 
 Use `uname` and/or `lsb_release`:
 

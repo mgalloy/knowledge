@@ -48,10 +48,6 @@ Use `load`:
 The `keyboard` command is equivalent to IDL's `stop`,
 but it only works with the MATLAB Desktop.
 
-No other good way.
-
-Lame.
-
 ## Line continuation
 
 Use the ellipsis:
@@ -64,5 +60,3 @@ Use the ellipsis:
 No increment or compound operators. Use:
 
 	>> i = i + 1
-
-Lame.

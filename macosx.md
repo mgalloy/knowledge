@@ -1,11 +1,11 @@
-# Notes on using a Mac
+# Mac OS X
 
 I'm still a Linux guy.
 
 ## Homebrew
 
 I'm trying [Homebrew](http://brew.sh/) for package management
-on ***anacreon***.
+on ***anacreon*** and ***solaria***.
 
 I want to install Bazaar and Mercurial:
 
@@ -127,7 +127,7 @@ version of emacs I've installed in **/Applications**.
 * Move between links with the keyboard shortcuts `Cmd-[` and `Cmd-]`
 * Annotations can be made and saved with a PDF
 
-## Mac OS X webserver
+## Webserver
 
 Apache is already installed. Execute:
 
