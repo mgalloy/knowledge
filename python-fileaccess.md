@@ -73,6 +73,7 @@ Examine the results:
  u'street1': u'CSDMS',
  u'street2': u'4001 Discovery Dr.',
  u'zip': 80303}
+
 >>> yaml_contact
 {'city': 'Boulder',
  'name': 'Mark Piper',
@@ -91,4 +92,7 @@ For netCDF3 files:
 
 See examples: http://www-pord.ucsd.edu/~cjiang/python.html
 
+Better to use the `netCDF4` library:
+
+    >>> import netCDF4
 
