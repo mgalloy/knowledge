@@ -2,10 +2,8 @@
 
 Equivalent (or nearly so) commands in Python and IDL.
 
-
-
-Python | IDL
-:----: | :-:
+Python         | IDL
+:-----         | :--
 `dir`          | HELP
 `help`         | ONLINE_HELP
 `pickle`       | SAVE
