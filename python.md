@@ -1,5 +1,10 @@
 # Python
 
+See also notes on [Matplotlib](./python-matplotlib.md),
+[packaging](./python-packaging.md),
+and [conda](./conda.md).
+
+
 Style
 ------------------------------------------------------------------------------
 
@@ -22,17 +27,25 @@ Program types
 Python has only functions, no procedures/subroutines. If no return is 
 specified, Python returns `None`, the null value.
 
-Definition syntax:
+**Definition syntax:**
 
 ```python
 def foo():
   print('bar!')
 ```
 
-Calling syntax:
+**Calling syntax:**
 
 	>>> foo()
 	bar!
+
+or
+
+	>>> a = foo()
+	bar!
+	>>> print a
+	None
+
 
 Case sensitivity
 ------------------------------------------------------------------------------
@@ -44,6 +57,7 @@ Python is case-sensitive.
 	>>> A != a
 	True
 
+
 Path
 ------------------------------------------------------------------------------
 
@@ -54,25 +68,44 @@ Path
 	>>> sys.path.append('/path/to/stuff')	# local to session
 	>>> sys.version
 
+Better to use packages, though.
+
+
 Importing modules
 ------------------------------------------------------------------------------
 
-Importing modules:
+The function `hello_world`
 
-	>>> import helloWorld as h
-	>>> h.helloWorld()
-	'Hello World!'
-	>>> i = h.helloWorld()
-	>>> i()
+```python
+def hello_world():
+  """Python hello world program."""
+  return "Hello World!"
+```
+
+is in the file **hello_world.py**.
+
+Import the module with:
+
+	>>> import hello_world as h
+
+then call it with:
+
+    >>> h.hello_world()
 	'Hello World!'
 
 or
 
-	>>> from helloWorld import helloWorld
-	>>> helloWorld()
+	>>> i = h.hello_world()
+	>>> i()
 	'Hello World!'
 
-It's strongly encouraged to never import like this:
+alternately,
+
+	>>> from hello_world import hello_world
+	>>> hello_world()
+	'Hello World!'
+
+It's strongly encouraged to never import using `*`:
 
 	>>> from <module> import *
 
@@ -93,23 +126,31 @@ Examples from my library (**minmax.py**):
 	>>> mm.minmax(a)
 	[0, 4]
 
+
 Module test suite
 ------------------------------------------------------------------------------
 
 Appending a main program at the bottom of an IDL routine is equivalent to 
-the python construct
+the Python construct
 
-	if __name__ == '__main__':
-		print helloWorld()
+```python
+if __name__ == '__main__':
+  print hello_world()
+```
 
-This is called the module test suite. It's a unit test. I use it as an example
-program in IDL. Call this main program from the shell prompt with:
+This is called the *module test suite*.
+It's a unit test.
+I use it as an example program in IDL.
+Call this main program from the shell prompt with:
 
-	$ python helloWorld.py
+	$ python hello_world.py
+	Hello World!
 
 or from within IPython with:
 
-	In [1]: run helloWorld.py
+	In [1]: run hello_world.py
+	Hello World!
+
 
 Arguments
 ------------------------------------------------------------------------------
@@ -123,25 +164,28 @@ matter.
 
 For an example, see **examples/ClassWithKeyword.py**.
 
+
 The dir() function
 ------------------------------------------------------------------------------
 
-The `dir()` function lists everything about something.
+The `dir` function lists everything about something.
 
-	>>> import helloWorld as h 
+	>>> import hello_world as h 
 	>>> dir(h)
-	['__builtins__', '__doc__', '__file__', '__name__', 'helloWorld']
+	['__builtins__', '__doc__', '__file__', '__name__', 'hello_world']
+
 
 The callable() function
 ------------------------------------------------------------------------------
 
 Is an object callable?
 
-	>>> import helloWorld as h 
+	>>> import hello_world as h 
 	>>> callable(h)
 	False
-	>>> callable(h.helloWorld)
+	>>> callable(h.hello_world)
 	True
+
 
 Doc strings
 ------------------------------------------------------------------------------
@@ -150,33 +194,42 @@ Get a doc string:
 
 	>>> print pow.__doc__
 
+Alternately, use the `help` function:
+
+    >>> help(pow)
+
+
 The 'os' module
 ------------------------------------------------------------------------------
 
-The 'os' module:
+The `os` module provides the equivalent of many (but not all) bash commands:
 
 	>>> os.path.exists('/Users/Mark/README')
 	True
-	>>> os.path.sep
+
+    >>> os.path.sep
 	'/'
-	>>> os.getcwd()
+
+    >>> os.getcwd()
 	'/Users/Mark/code/python'
-	>>> os.listdir(os.getcwd)) # same as my PWD program in IDL
+
+    >>> os.listdir(os.getcwd))
+
 
 Lists
 ------------------------------------------------------------------------------
 
-Note that "x" is a list, not an array (which needs Numpy):
+Note that `x` is a list, not an array (which needs Numpy):
 
-	In [40]: x = range(5)
-	In [41]: x
-	Out[41]: [0, 1, 2, 3, 4]
-	In [42]: dir(x);    # remove ";" to see output, like MATLAB
-	In [43]: x.__class__
-	Out[43]: list
-	In [44]: x.append(55)
-	In [45]: x
-	Out[45]: [0, 1, 2, 3, 4, 55]
+	>>> x = range(5)
+	>>> x
+	>>> [0, 1, 2, 3, 4]
+	>>> dir(x);  # remove ";" to see output, like MATLAB
+	>>> x.__class__
+	>>> list
+	>>> x.append(55)
+	>>> x
+	>>> [0, 1, 2, 3, 4, 55]
 
 Note the difference between `range` (list) and `arange` (array):
 
@@ -222,6 +275,19 @@ Append versus extend:
 	In [30]: x2
 	Out[30]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+Lists are copied by reference:
+
+    >>> b = [1,2,3]
+	>>> c = b
+	>>> c[1] = 56
+	>>> b
+	[1, 56, 3]
+
+Yikes! Subscript to copy the values of one list to another:
+
+    >>> c = b[:]
+
+
 ### List comprehesion:
 
 It's like an implied loop in Fortran.
@@ -231,10 +297,12 @@ It's like an implied loop in Fortran.
 	>>> x, y
 	([0, 1, 2, 3, 4], [0, 1, 4, 9, 16])
 
+
 ### List filtering
 
 List filtering is equivalent to running WHERE output through conditioned
 array.
+
 
 Tuples
 ------------------------------------------------------------------------------
@@ -250,6 +318,15 @@ Lists use [], tuples use ().
 
 Tuples are immutable.
 
+    >>> a = (1,2,3)
+	>>> a
+	(1, 2, 3)
+	>>> a[1] = 56
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	TypeError: 'tuple' object does not support item assignment
+
+
 Lambda functions
 ------------------------------------------------------------------------------
 
@@ -259,14 +336,23 @@ Lambda functions:
 
 is equivalent to
 
-	def g(x):
-		return x**2
+```python
+def g(x):
+  return x**2
+```
+
+Use:
+
+    >>> g(5)
+	25
+
 
 Typing
 ------------------------------------------------------------------------------
 
 Python is dynamically and strongly (needs explicit type conversion) typed.
 IDL is dynamically and weakly typed.
+
 
 String formatting
 ------------------------------------------------------------------------------
@@ -283,15 +369,18 @@ And it can be crazy. Check this out:
 	>>> s
 	'Hi, my name is Mark Piper, Grand Poobah.'
 
+
 Garbage collection
 ------------------------------------------------------------------------------
 
 Python uses reference counting on objects, like IDL 8.0.
 
+
 OOP
 ------------------------------------------------------------------------------
 
 Python uses class and instance variables.
+
 
 Array operations
 ------------------------------------------------------------------------------
@@ -299,9 +388,10 @@ Array operations
 Need numpy or scipy to do array operations, eh?
 
 	>>> i = range(10)
-	>>> j = i**2 # raises exception???
+	>>> j = i**2 # raises exception
 
 Arrays are not intrinsic in Python.
+
 
 Slicing
 ------------------------------------------------------------------------------
@@ -315,17 +405,19 @@ Subscripting ("slicing") arrays is whack. Done on interval [start,end).
 Negative indexing works like IDL, with -1 the last element in an
 array.
 
+
 Numpy doesn't copy
 ------------------------------------------------------------------------------
 
-Arrays aren't copied. (Assignment creates a pointer to the original
-array.)
+Like lists, arrays aren't copied.
+(Assignment creates a pointer to the original array.)
 
 	>>> x = np.arange(0,5)
 	>>> y = x
 	>>> y[-1] = 42.0
 	>>> print x
 	[ 0  1  2  3 42]
+
 
 List to an array
 ------------------------------------------------------------------------------
@@ -339,30 +431,12 @@ Convert a list to an array:
 	>>> y.__class__
 	numpy.ndarray
 
-Install directory
-------------------------------------------------------------------------------
-
-Install directory: **/usr/lib/python2.7/**
 
 Integers
 ------------------------------------------------------------------------------
 
 Python supports integer division.
 
-Numpy version
-------------------------------------------------------------------------------
-
-	>>> import numpy
-	>>> print numpy.__version__
-	1.6.1
-
-Reading from a text file
-------------------------------------------------------------------------------
-
-Text is read into a list.
-
-	with open("./config/dependencies.txt", "r") as f:
-		dependencies = f.read().split("\n")
 
 The subprocess module
 ------------------------------------------------------------------------------
@@ -389,15 +463,6 @@ Alternately, using a single string:
 See the [docs](https://docs.python.org/2/library/subprocess.html#replacing-os-system).
 
 
-NetCDF
-------------------------------------------------------------------------------
-
-For netCDF3 files:
-
-	>>> from scipy.io import netcdf
-
-See examples: http://www-pord.ucsd.edu/~cjiang/python.html
-
 Magic functions
 ------------------------------------------------------------------------------
 
@@ -416,6 +481,7 @@ though some may need to be escaped:
 
 	!date
 
+
 History
 ------------------------------------------------------------------------------
 
@@ -424,6 +490,7 @@ Use `Ctrl-P` to search through history to match a command.
 `Ctrl-N` does a reverse search.
 
 Works in Python and IPython.
+
 
 Movies!
 ------------------------------------------------------------------------------
@@ -436,133 +503,3 @@ However, is there a Pythonic solution?
 
 Yes, though not with my version of matplotlib (1.1.1rc). 
 See: http://stackoverflow.com/questions/4092927/generating-movie-from-python-without-saving-individual-frames-to-files
-
-
-Some IDL equivalents
-------------------------------------------------------------------------------
-
-Or near-equivalents.
-
-<table>
-
-<tr>
-<td><b>Python</b></td>
-<td><b>IDL</b></td>
-</tr>
-
-<tr>
-<td>dir()</td>
-<td>HELP</td>
-</tr>
-
-<tr>
-<td>help()</td>
-<td>ONLINE_HELP</td>
-</tr>
-
-<tr>
-<td>pickle()</td>
-<td>SAVE</td>
-</tr>
-
-<tr>
-<td>range()</td>
-<td>*INDGEN</td>
-</tr>
-
-<tr>
-<td>arange()</td>
-<td>*INDGEN (numpy)</td>
-</tr>
-
-<tr>
-<td>linspace()</td>
-<td>*INDGEN(n)*scale + offset</td>
-</tr>
-
-<tr>
-<td>f.seek()</td>
-<td>SKIP_LUN, POINT_LUN</td>
-</tr>
-
-<tr>
-<td>f.tell()</td>
-<td>POINT_LUN</td>
-</tr>
-
-<tr>
-<td>len()</td>
-<td>N_ELEMENTS (only on first dim of array)</td>
-</tr>
-
-<tr>
-<td>x.size()</td>
-<td>N_ELEMENTS</td>
-</tr>
-
-<tr>
-<td>x.shape()</td>
-<td>SIZE</td>
-</tr>
-
-<tr>
-<td>x.reshape()</td>
-<td>REFORM</td>
-</tr>
-
-<tr>
-<td>None</td>
-<td>!NULL</td>
-</tr>
-
-<tr>
-<td>os.chdir()</td>
-<td>CD</td>
-</tr>
-
-<tr>
-<td>os.getcwd()</td>
-<td>CD</td>
-</tr>
-
-<tr>
-<td>&gt;</td>
-<td>GE</td>
-</tr>
-
-<tr>
-<td>&lt;</td>
-<td>LE</td>
-</tr>
-
-<tr>
-<td>eval()</td>
-<td>EXECUTE</td>
-</tr>
-
-<tr>
-<td>exec()</td>
-<td>EXECUTE</td>
-</tr>
-
-<tr>
-<td>sys.exit()</td>
-<td>EXIT</td>
-</tr>
-
-<tr>
-<td>a = x.copy()</td>
-<td>a = x</td>
-</tr>
-
-<tr>
-<td>plt.plot()</td>
-<td>PLOT()</td>
-</tr>
-
-<tr>
-<td>plt.figure()</td>
-<td>WINDOW()</td>
-</tr>
-
-</table>
