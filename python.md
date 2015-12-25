@@ -13,8 +13,9 @@ The Python style guide is called the PEP-8, authored by Guido:
 [http://www.python.org/dev/peps/pep-0008/](http://www.python.org/dev/peps/pep-0008/)
 
 Also:
-
-	>>> import this
+```python
+>>> import this
+```
 
 Check for style errors with `pep8`:
 
@@ -28,45 +29,48 @@ Python has only functions, no procedures/subroutines. If no return is
 specified, Python returns `None`, the null value.
 
 **Definition syntax:**
-
 ```python
 def foo():
   print('bar!')
 ```
 
 **Calling syntax:**
-
-	>>> foo()
-	bar!
+```python
+>>> foo()
+bar!
+```
 
 or
-
-	>>> a = foo()
-	bar!
-	>>> print a
-	None
+```python
+>>> a = foo()
+bar!
+>>> print a
+None
+```
 
 
 Case sensitivity
 ------------------------------------------------------------------------------
 
 Python is case-sensitive. 
-
-	>>> a = 5
-	>>> A = 6
-	>>> A != a
-	True
+```python
+>>> a = 5
+>>> A = 6
+>>> A != a
+True
+```
 
 
 Path
 ------------------------------------------------------------------------------
 
 `$PYTHONPATH` sets path.
-
-	>>> import sys
-	>>> sys.path	# prints path
-	>>> sys.path.append('/path/to/stuff')	# local to session
-	>>> sys.version
+```python
+>>> import sys
+>>> sys.path  # prints path
+>>> sys.path.append('/path/to/stuff')  # local to session
+>>> sys.version
+```
 
 Better to use packages, though.
 
@@ -85,46 +89,52 @@ def hello_world():
 is in the file **hello_world.py**.
 
 Import the module with:
-
-	>>> import hello_world as h
+```python
+>>> import hello_world as h
+```
 
 then call it with:
-
-    >>> h.hello_world()
-	'Hello World!'
+```python
+>>> h.hello_world()
+'Hello World!'
+```
 
 or
-
-	>>> i = h.hello_world()
-	>>> i()
-	'Hello World!'
+```python
+>>> i = h.hello_world()
+>>> i()
+'Hello World!'
+```
 
 alternately,
-
-	>>> from hello_world import hello_world
-	>>> hello_world()
-	'Hello World!'
+```python
+>>> from hello_world import hello_world
+>>> hello_world()
+'Hello World!'
+```
 
 It's strongly encouraged to never import using `*`:
-
-	>>> from <module> import *
+```python
+>>> from <module> import *
+```
 
 Examples from my library (**minmax.py**):
+```python
+>>> from minmax import *
+>>> a = range(5)
+>>> minmax(a)
+[0, 4]
 
-	>>> from minmax import *
-	>>> a = range(5)
-	>>> minmax(a)
-	[0, 4]
+>>> from minmax import minmax
+>>> a = range(5)
+>>> b = minmax(a)
+>>> b
+[0, 4]
 
-	>>> from minmax import minmax
-	>>> a = range(5)
-	>>> b = minmax(a)
-	>>> b
-	[0, 4]
-
-	>>> import minmax as mm
-	>>> mm.minmax(a)
-	[0, 4]
+>>> import minmax as mm
+>>> mm.minmax(a)
+[0, 4]
+```
 
 
 Module test suite
@@ -169,133 +179,149 @@ The dir() function
 ------------------------------------------------------------------------------
 
 The `dir` function lists everything about something.
-
-	>>> import hello_world as h 
-	>>> dir(h)
-	['__builtins__', '__doc__', '__file__', '__name__', 'hello_world']
+```python
+>>> import hello_world as h 
+>>> dir(h)
+['__builtins__', '__doc__', '__file__', '__name__', 'hello_world']
+```
 
 
 The callable() function
 ------------------------------------------------------------------------------
 
 Is an object callable?
-
-	>>> import hello_world as h 
-	>>> callable(h)
-	False
-	>>> callable(h.hello_world)
-	True
+```python
+>>> import hello_world as h 
+>>> callable(h)
+False
+>>> callable(h.hello_world)
+True
+```
 
 
 Doc strings
 ------------------------------------------------------------------------------
 
 Get a doc string:
-
-	>>> print pow.__doc__
+```python
+>>> print pow.__doc__
+```
 
 Alternately, use the `help` function:
-
-    >>> help(pow)
+```python
+>>> help(pow)
+```
 
 
 The 'os' module
 ------------------------------------------------------------------------------
 
 The `os` module provides the equivalent of many (but not all) bash commands:
+```python
+>>> os.path.exists('/Users/Mark/README')
+True
 
-	>>> os.path.exists('/Users/Mark/README')
-	True
+>>> os.path.sep
+'/'
 
-    >>> os.path.sep
-	'/'
+>>> os.getcwd()
+'/Users/Mark/code/python'
 
-    >>> os.getcwd()
-	'/Users/Mark/code/python'
-
-    >>> os.listdir(os.getcwd))
+>>> os.listdir(os.getcwd))
+```
 
 
 Lists
 ------------------------------------------------------------------------------
 
 Note that `x` is a list, not an array (which needs Numpy):
+```python
+>>> x = range(5)
+>>> x
+>>> [0, 1, 2, 3, 4]
 
-	>>> x = range(5)
-	>>> x
-	>>> [0, 1, 2, 3, 4]
-	>>> dir(x);  # remove ";" to see output, like MATLAB
-	>>> x.__class__
-	>>> list
-	>>> x.append(55)
-	>>> x
-	>>> [0, 1, 2, 3, 4, 55]
+>>> dir(x);  # remove ";" to see output, like MATLAB
+
+>>> x.__class__
+>>> list
+
+>>> x.append(55)
+>>> x
+>>> [0, 1, 2, 3, 4, 55]
+```
 
 Note the difference between `range` (list) and `arange` (array):
-
-	In [58]: x = range(5)
-	In [59]: y = np.arange(0,5)
-	In [60]: x
-	Out[60]: [0, 1, 2, 3, 4]
-	In [61]: y
-	Out[61]: array([0, 1, 2, 3, 4])
-	In [62]: x*2
-	Out[62]: [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
-	In [63]: y*2
-	Out[63]: array([0, 2, 4, 6, 8])
+```python
+In [58]: x = range(5)
+In [59]: y = np.arange(0,5)
+In [60]: x
+Out[60]: [0, 1, 2, 3, 4]
+In [61]: y
+Out[61]: array([0, 1, 2, 3, 4])
+In [62]: x*2
+Out[62]: [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
+In [63]: y*2
+Out[63]: array([0, 2, 4, 6, 8])
+```
 
 And `xrange` is optimized to be faster than `range`:
+```python
+In [10]: %timeit list1 = range(1000000)
+100 loops, best of 3: 15 ms per loop
 
-	In [10]: %timeit list1 = range(1000000)
-	100 loops, best of 3: 15 ms per loop
-
-    In [11]: %timeit list2 = xrange(1000000)
-	10000000 loops, best of 3: 151 ns per loop
+In [11]: %timeit list2 = xrange(1000000)
+10000000 loops, best of 3: 151 ns per loop
+```
 
 Get the length of a list:
-
-	>>> len(x)
-	5
+```python
+>>> len(x)
+5
+```
 
 Remove an element from a list:
-
-	>>> x.pop(0)
-	>>> x
-	[1, 2, 3, 4]
+```python
+>>> x.pop(0)
+>>> x
+[1, 2, 3, 4]
+```
 
 Append versus extend:
-
-	In [24]: x1 = range(5)
-	In [25]: x2 = range(5)
-	In [26]: y = range(5,10)
-	In [27]: x1.append(y)
-	In [28]: x1
-	Out[28]: [0, 1, 2, 3, 4, [5, 6, 7, 8, 9]]
-	In [29]: x2.extend(y)
-	In [30]: x2
-	Out[30]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```python
+In [24]: x1 = range(5)
+In [25]: x2 = range(5)
+In [26]: y = range(5,10)
+In [27]: x1.append(y)
+In [28]: x1
+Out[28]: [0, 1, 2, 3, 4, [5, 6, 7, 8, 9]]
+In [29]: x2.extend(y)
+In [30]: x2
+Out[30]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
 
 Lists are copied by reference:
-
-    >>> b = [1,2,3]
-	>>> c = b
-	>>> c[1] = 56
-	>>> b
-	[1, 56, 3]
+```python
+>>> b = [1,2,3]
+>>> c = b
+>>> c[1] = 56
+>>> b
+[1, 56, 3]
+```
 
 Yikes! Subscript to copy the values of one list to another:
-
-    >>> c = b[:]
-
+```python
+>>> c = b[:]
+```
 
 ### List comprehesion:
 
 It's like an implied loop in Fortran.
-
-	>>> x = range(5)
-	>>> y = [i**2 for i in x]
-	>>> x, y
-	([0, 1, 2, 3, 4], [0, 1, 4, 9, 16])
+```python
+>>> x = range(5)
+>>> y = [i**2 for i in x]
+>>> x, y
+([0, 1, 2, 3, 4], [0, 1, 4, 9, 16])
+```
 
 
 ### List filtering
@@ -307,44 +333,47 @@ array.
 Tuples
 ------------------------------------------------------------------------------
 
-Lists use [], tuples use ().
-
-	>>> a = [1,2,3]
-	>>> b = (1,2,3)
-	>>> type(a)
-	list
-	>>> type(b)
-	tuple
+Lists use `[]`, tuples use `()`.
+```python
+>>> a = [1,2,3]
+>>> b = (1,2,3)
+>>> type(a)
+list
+>>> type(b)
+tuple
+```
 
 Tuples are immutable.
-
-    >>> a = (1,2,3)
-	>>> a
-	(1, 2, 3)
-	>>> a[1] = 56
-	Traceback (most recent call last):
-	  File "<stdin>", line 1, in <module>
-	TypeError: 'tuple' object does not support item assignment
+```python
+>>> a = (1,2,3)
+>>> a
+(1, 2, 3)
+>>> a[1] = 56
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
 
 
 Lambda functions
 ------------------------------------------------------------------------------
 
 Lambda functions:
-
-	>>> g = lambda x: x**2
+```python
+>>> g = lambda x: x**2
+```
 
 is equivalent to
-
 ```python
 def g(x):
   return x**2
 ```
 
-Use:
-
-    >>> g(5)
-	25
+Use it:
+```python
+>>> g(5)
+25
+```
 
 
 Typing
@@ -361,13 +390,14 @@ String formatting in Python is the same as `sprintf` in C. The `+`
 operator does concatenation, while `str()` does type coercion.
 
 And it can be crazy. Check this out:
-
-	>>> first_name = "Mark"
-	>>> last_name = "Piper"
-	>>> title = "Grand Poobah"
-	>>> s = "Hi, my name is {0} {1}, {2}.".format(first_name, last_name, title)
-	>>> s
-	'Hi, my name is Mark Piper, Grand Poobah.'
+```python
+>>> first_name = "Mark"
+>>> last_name = "Piper"
+>>> title = "Grand Poobah"
+>>> s = "Hi, my name is {0} {1}, {2}.".format(first_name, last_name, title)
+>>> s
+'Hi, my name is Mark Piper, Grand Poobah.'
+```
 
 
 Garbage collection
@@ -386,9 +416,10 @@ Array operations
 ------------------------------------------------------------------------------
 
 Need numpy or scipy to do array operations, eh?
-
-	>>> i = range(10)
-	>>> j = i**2 # raises exception
+```python
+>>> i = range(10)
+>>> j = i**2 # raises exception
+```
 
 Arrays are not intrinsic in Python.
 
@@ -397,10 +428,11 @@ Slicing
 ------------------------------------------------------------------------------
 
 Subscripting ("slicing") arrays is whack. Done on interval [start,end).
-
-	In [34]: x = range(10)
-	In [35]: x[0:4]
-	Out[35]: [0, 1, 2, 3]
+```python
+In [34]: x = range(10)
+In [35]: x[0:4]
+Out[35]: [0, 1, 2, 3]
+```
 
 Negative indexing works like IDL, with -1 the last element in an
 array.
@@ -411,25 +443,27 @@ Numpy doesn't copy
 
 Like lists, arrays aren't copied.
 (Assignment creates a pointer to the original array.)
-
-	>>> x = np.arange(0,5)
-	>>> y = x
-	>>> y[-1] = 42.0
-	>>> print x
-	[ 0  1  2  3 42]
+```python
+>>> x = np.arange(0,5)
+>>> y = x
+>>> y[-1] = 42.0
+>>> print x
+[ 0  1  2  3 42]
+```
 
 
 List to an array
 ------------------------------------------------------------------------------
 
 Convert a list to an array:
-
-	>>> x = range(5)
-	>>> y = np.asarray(x)
-	>>> x.__class__
-	list
-	>>> y.__class__
-	numpy.ndarray
+```python
+>>> x = range(5)
+>>> y = np.asarray(x)
+>>> x.__class__
+list
+>>> y.__class__
+numpy.ndarray
+```
 
 
 Integers
