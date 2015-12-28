@@ -1,4 +1,4 @@
-# Notes on using Subversion
+# Subversion
 
 My primary `svn` repository is located at
 

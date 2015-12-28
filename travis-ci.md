@@ -1,4 +1,4 @@
-# Notes on Travis CI
+# Travis CI
 
 [Travis CI](https://travis-ci.com) is a continuous integration tool.
 Every time you push a project to a repository,
@@ -69,6 +69,7 @@ so this target needs to be included in the **build.xml** file.
 *Question:* Do libraries, like JUnit, need to be included in the
 project?  It seems like JUnit would be included in the Java distros
 that Travis CI provides.
+I've added JUnit to each of my projects that use it.
 
 
 ## GWT

@@ -1,4 +1,4 @@
-# Using yum
+# Yum
 
 Yum is a Linux package manager.
 
@@ -57,7 +57,7 @@ Get details about a package with `info`:
 
 ## Install a package
 
-You need to be root to `install` a package:
+You need to be root to install packages:
 
 	$ sudo yum install gcc-gfortran
 
