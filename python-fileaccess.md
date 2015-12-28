@@ -127,7 +127,7 @@ Create an identifier for a netCDF file with temperature values:
 'NETCDF4'
 >>> T_id.file_format
 'NETCDF4'
-```python
+```
 
 What variables are in the file?
 ```python
