@@ -3,11 +3,40 @@
 ## Reading from a text file
 
 Text is read into a list.
-
 ```python
 with open("dependencies.txt", "r") as f:
   deps = f.read().split("\n")
 ```
+
+Alternately:
+```python
+with open("dependencies.txt", "r") as f:
+  deps = f.readlines()
+```
+
+or use Numpy's `loadtxt`:
+```python
+from numpy import loadtxt
+deps = loadtxt("dependencies.txt", comments="#", delimiter=",", unpack=False)
+```
+
+
+## Reading from a binary file
+
+Use Numpy's `fromfile`:
+```python
+>>> r = np.fromfile('default_slope.bin', dtype=np.float32, count=-1, sep='')
+>>> r.shape
+(1276,)
+>>> r[0:10]
+array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.], dtype=float32)
+```
+
+Swap endianness with:
+```python
+>>> r.newbyteorder()
+```
+
 
 ## JSON and YAML
 
@@ -86,13 +115,54 @@ Examine the results:
 
 ## NetCDF
 
+Use the `netCDF4` library:
+
+    >>> import netCDF4
+
+Create an identifier for a netCDF file with temperature values:
+```python
+>>> T_file = 'atmosphere_bottom_air__temperature.nc'
+>>> T_id = netCDF4.Dataset(T_file)
+>>> T_id.data_model
+'NETCDF4'
+>>> T_id.file_format
+'NETCDF4'
+```python
+
+What variables are in the file?
+```python
+>>> len(T_id.variables)
+5
+>>> T_id.variables.keys()
+[u'mesh', u'y', u'x', u'atmosphere_bottom_air__temperature', u'time']
+```
+
+Extract the temperature variable:
+```python
+>>> T = T_id.variables['atmosphere_bottom_air__temperature']
+
+>>> T.shape
+(90, 44, 29)
+
+>>> T[0::]
+array([[[ 20.,  20.,  20., ...,  20.,  20.,  20.],
+        [ 20.,  20.,  20., ...,  20.,  20.,  20.],
+        [ 20.,  20.,  20., ...,  20.,  20.,  20.],
+        ...,
+
+>>> T[0::].min()
+20.0
+>>> T[0::].max()
+20.0
+```
+
+
+### Alternate: scipy.io.netcdf
+
 For netCDF3 files:
 
 	>>> from scipy.io import netcdf
 
 See examples: http://www-pord.ucsd.edu/~cjiang/python.html
 
-Better to use the `netCDF4` library:
-
-    >>> import netCDF4
 
