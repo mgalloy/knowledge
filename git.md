@@ -24,7 +24,7 @@ To check:
 
 Set the editor (if different from default in shell):
 
-	$ git config --global core.editor vim
+	$ git config --global core.editor emacs
 
 Why does Github repeatedly ask for my username and password?
 Because I'm using an [HTTPS remote URL](https://help.github.com/articles/why-is-git-always-asking-for-my-password).
@@ -46,7 +46,8 @@ A directory is created locally with the name of the clone.
 This is the _working directory_.
 Specifying the name of the clone (as in the second example) is optional.
 
-## List repo aliases
+
+## Remotes
 
 What remote repository am I working on?
 
@@ -56,22 +57,18 @@ What remote repository am I working on?
 	origin	https://github.com/mdpiper/wmt.git (fetch)
 	origin	https://github.com/mdpiper/wmt.git (push)
 
-**Note**: After cloning a repo on ***siwenna***, I couldn't push my changes
-back to GitHub. Here's the error:
+Add the upstream repo to the list of remotes for the local repo:
 
-	$ git push origin master
-	error: The requested URL returned error: 403 Forbidden while accessing https://github.com/csdms/rpm_models/info/refs
-	fatal: HTTP request failed
+    $ git remote add upstream https://github.com/csdms/wmt.git
 
-I had been using 1.7.1. I downloaded and built from source 1.8.5.5,
-but the problem persisted.
-To solve this (help [here](http://stackoverflow.com/a/11368701/1563298)),
-I included my username in the remote:
+now:
 
-	$ git remote set-url origin https://mdpiper@github.com/csdms/rpm_models
+	$ git remote -v
+	origin	https://github.com/mdpiper/wmt.git (fetch)
+	origin	https://github.com/mdpiper/wmt.git (push)
+	upstream	https://github.com/csdms/wmt.git (fetch)
+	upstream	https://github.com/csdms/wmt.git (push)
 
-And now I can push changes.
-And better, now I only need my password.
 
 ## Status
 
@@ -80,6 +77,7 @@ Check the status of files in the working directory:
 	$ cd wmt-mpiper
 	$ git status -s
 	M  README.md
+
 
 ## Commit
 
@@ -92,11 +90,12 @@ Commit changes from the working directory:
 
 Can also commit individual files:
 
-	$ git commit README.md
+	$ git commit README.md -m "Update README file"
 
-Note that (unlike subversion) this isn't enough
--- still need to push the commits back to
+Note that, unlike subversion, this isn't enough
+-- I still need to push the commits back to
 the remote repository.
+
 
 ## Revert a change before commit
 
@@ -107,6 +106,18 @@ For an individual file:
 For everything, from the working directory, call:
 
 	$ git checkout -- .
+
+
+## Delete the last unpushed commit
+
+Delete the most recent commit:
+
+	git reset --hard HEAD~1
+
+Delete the most recent commit, but without destroying the work you've done:
+
+	git reset --soft HEAD~1
+
 
 ## View commit log
 
@@ -135,60 +146,6 @@ Here's a sample result:
 Simpler: just the last three commits, please:
 
 	$ git log -3
-
-## Delete the last unpushed commit
-
-Delete the most recent commit:
-
-	git reset --hard HEAD~1
-
-Delete the most recent commit, but without destroying the work you've done:
-
-	git reset --soft HEAD~1
-
-## Branch
-
-See what branches are available:
-
-	$ git branch
-	* master
-	  styling-and-appearance
-  
-Switch between branches:
-
-	$ git checkout styling-and-appearance
-	Switched to branch 'styling-and-appearance'
-	$ git branch
-	  master
-	* styling-and-appearance
-	
-Let's say I've made some changes,
-and I'd like them to be committed to a new branch.
-Start by creating the new branch:
-
-    $ git branch -b add-topoflow
-	M	scripts/install
-	Switched to a new branch 'add-topoflow'
-
-Add the changed files to the new branch:
-
-    $ git add scripts/install
-
-Then commit the changes:
-
-    $ git commit -am "Update install script for TopoFlow repo"
-
-Push the new branch, with its changes, back to the remote,
-creating a new branch on the remote:
-
-    $ git push -u origin add-topoflow
-
-Count the number of commits the branch is ahead of master:
-
-    $ git rev-list master.. --count
-	1
-
-See also **Rebase** below.
 
 
 ## Push
@@ -240,6 +197,146 @@ Fix this with:
 
 * [http://stackoverflow.com/a/11368701/1563298](http://stackoverflow.com/a/11368701/1563298) [stackoverflow.com]
 * [http://stackoverflow.com/a/16104473/1563298](http://stackoverflow.com/a/16104473/1563298) [stackoverflow.com]
+
+
+## Branch
+
+See what branches are available:
+
+	$ git branch
+	* master
+	  styling-and-appearance
+  
+Switch between branches:
+
+	$ git checkout styling-and-appearance
+	Switched to branch 'styling-and-appearance'
+	$ git branch
+	  master
+	* styling-and-appearance
+	
+Let's say I've made some changes,
+and I'd like them to be committed to a new branch.
+Start by creating the new branch:
+
+    $ git branch -b add-topoflow
+	M	scripts/install
+	Switched to a new branch 'add-topoflow'
+
+Add the changed files to the new branch:
+
+    $ git add scripts/install
+
+Then commit the changes:
+
+    $ git commit -am "Update install script for TopoFlow repo"
+
+Push the new branch, with its changes, back to the remote,
+creating a new branch on the remote:
+
+    $ git push -u origin add-topoflow
+
+Count the number of commits the branch is ahead of master:
+
+    $ git rev-list master.. --count
+	1
+
+See also **Rebase** below.
+
+
+## Stashing changes
+
+This is neat.
+I can stash changes I've made on a branch with:
+
+    git stash
+
+then retrieve them later with:
+
+    git stash pop
+
+
+## Rebase
+
+I've been persisting a few branches on `mdpiper/wmt` (e.g.,
+`jso-data-types`, `data-transfer`, etc.) instead of deleting them
+after a merge. However, I noticed that they were falling behind the
+master branch because of messages applied by Github during the
+merge. The answer is to rebase the branch:
+
+	$ git checkout jso-data-types
+	$ git rebase master
+	$ git push
+
+And now the branch is in sync with the master.
+
+Another case is I've been working on a branch, `foo`,
+which is ahead of `master`.
+I then commit some changes to `master`.
+Use `git rebase` to pull the changes from `master` into `foo`:
+
+    $ git checkout foo
+	$ git rebase master
+
+This
+[article](http://mettadore.com/analysis/a-simple-git-rebase-workflow-explained/)
+helpfully explains branching and rebasing.
+
+
+## Fetch a specific file or directory from a repo
+
+1. `cd` to the root directory of the repo
+1. `git fetch`
+1. `git checkout HEAD path/to/dir/or/file`
+
+**Reference:**
+
+* [http://stackoverflow.com/a/4048993/1563298](http://stackoverflow.com/a/4048993/1563298)
+
+
+## Fetch a specific branch from a repo
+
+Let's say I've just cloned a repo; e.g., **wmt-client**.
+Only the master branch is fetched, by default.
+To get another branch, say `update-parameter-table`:
+
+1. `cd` to the root directory of the repo
+1. `git fetch`
+1. `git checkout update-parameter-table`
+
+Note that after the fetch,
+the name of the other branch still won't be shown.
+
+
+## Orphan branch
+
+In the
+[csdms-contrib/storm](https://github.com/csdms-contrib/storm)
+repo,
+I had code which I was no longer using
+-- the original Fortran version of **storm**
+and my "faithful" C translation
+-- so I put these code lines into _orphan branches_.
+They now have no parents
+and are the root of a new history totally disconnected
+from the other branches and commits.
+
+Here are the steps that I used to create the orphan branch
+I named `reference/original-fortran`:
+
+	git clone https://github.com/csdms-contrib/storm.git
+	git checkout --orphan reference/original-fortran
+	git rm -rf .   	# Yes, I deleted everything.
+	...
+	git add --all   # Then I added back what was needed.
+	git commit -am "Import original Fortran source"
+	git push origin reference/original-fortran
+
+**Reference:**
+
+* This is for GitHub Pages, but it's exactly what I needed:
+  [https://help.github.com/articles/creating-project-pages-manually/](https://help.github.com/articles/creating-project-pages-manually/)
+
 
 ## Pull request
 
@@ -334,7 +431,7 @@ as what Eric did; I'll check with him).
 
 Use the
 [workflow](http://docs.astropy.org/en/stable/development/workflow/development_workflow.html)
-provided by the (insufferably smug) AstroPy people.
+provided by the AstroPy people.
 
 1. Fork the repository.
 2. Clone the fork to the local machine.
@@ -400,33 +497,6 @@ provided by the (insufferably smug) AstroPy people.
 
 These steps have worked successfully for me.
 
-## Rebase
-
-I've been persisting a few branches on `mdpiper/wmt` (e.g.,
-`jso-data-types`, `data-transfer`, etc.) instead of deleting them
-after a merge. However, I noticed that they were falling behind the
-master branch because of messages applied by Github during the
-merge. The answer is to rebase the branch:
-
-	$ git checkout jso-data-types
-	$ git rebase master
-	$ git push
-
-And now the branch is in sync with the master.
-
-Another case is I've been working on a branch, `foo`,
-which is ahead of `master`.
-I then commit some changes to `master`.
-Use `git rebase` to pull the changes from `master` into `foo`:
-
-    $ git checkout foo
-	$ git rebase master
-
-This
-[article](http://mettadore.com/analysis/a-simple-git-rebase-workflow-explained/)
-helpfully explains branching and rebasing.
-
-
 
 ## Splitting a repository
 
@@ -467,34 +537,6 @@ to GitHub:
 The example is for [storm](https://github.com/csdms-contrib/storm),
 which had an existing repo on GitHub.
 
-## Orphan branch
-
-In the
-[csdms-contrib/storm](https://github.com/csdms-contrib/storm)
-repo,
-I had code which I was no longer using
--- the original Fortran version of **storm**
-and my "faithful" C translation
--- so I put these code lines into _orphan branches_.
-They now have no parents
-and are the root of a new history totally disconnected
-from the other branches and commits.
-
-Here are the steps that I used to create the orphan branch
-I named `reference/original-fortran`:
-
-	git clone https://github.com/csdms-contrib/storm.git
-	git checkout --orphan reference/original-fortran
-	git rm -rf .   	# Yes, I deleted everything.
-	...
-	git add --all   # Then I added back what was needed.
-	git commit -am "Import original Fortran source"
-	git push origin reference/original-fortran
-
-**Reference:**
-
-* This is for GitHub Pages, but it's exactly what I needed:
-  [https://help.github.com/articles/creating-project-pages-manually/](https://help.github.com/articles/creating-project-pages-manually/)
 
 ## Submodules
 
@@ -517,39 +559,4 @@ This is a GitHub, not a git, thing, but nevertheless, use
 [https://github-issue-mover.appspot.com/](https://github-issue-mover.appspot.com/).
 
 
-## Pull a specific file or directory from a repo
-
-1. `cd` to the root directory of the repo
-1. `git fetch`
-1. `git checkout HEAD path/to/dir/or/file`
-
-**Reference:**
-
-* [http://stackoverflow.com/a/4048993/1563298](http://stackoverflow.com/a/4048993/1563298)
-
-
-## Pull a specific branch from a repo
-
-Let's say I've just cloned a repo; e.g., **wmt-client**.
-Only the master branch is fetched, by default.
-To get another branch, say `update-parameter-table`:
-
-1. `cd` to the root directory of the repo
-1. `git fetch`
-1. `git checkout update-parameter-table`
-
-Note that after the fetch,
-the name of the other branch still won't be shown.
-
-
-## Stashing changes
-
-This is neat.
-I can stash changes I've made on a branch with:
-
-    git stash
-
-then retrieve them later with:
-
-    git stash pop
 
