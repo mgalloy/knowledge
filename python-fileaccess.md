@@ -1,5 +1,10 @@
 # File access in Python
 
+Most of these are basic,
+but they'll save me from having to look them up
+when I need them.
+
+
 ## Reading from a text file
 
 Text is read into a list.
@@ -18,6 +23,59 @@ or use Numpy's `loadtxt`:
 ```python
 from numpy import loadtxt
 deps = loadtxt("dependencies.txt", comments="#", delimiter=",", unpack=False)
+```
+
+
+## Writing to a text file
+
+A list of numbers:
+```python
+>>> precip_rates = np.linspace(5, 20, num=_n_steps, endpoint=False)
+>>> precip_rates
+array([  5. ,   6.5,   8. ,   9.5,  11. ,  12.5,  14. ,  15.5,  17. ,  18.5])
+```
+
+Write the numbers to a text file,
+one number per line:
+```python
+with open('precip_rates.txt', 'w') as fp:
+  for val in precip_rates:
+    fp.write(str(val) + '\n')
+```
+
+Check the result:
+```bash
+$ cat precip_rates.txt
+5.0
+6.5
+8.0
+9.5
+11.0
+12.5
+14.0
+15.5
+17.0
+18.5
+```
+
+Better, use Numpy's `savetxt`:
+```python
+>>> np.savetxt('precip_rates.txt', precip_rates, fmt='%6.2f')
+```
+
+Check the result:
+```bash
+$ cat precip_rates.txt
+  5.00
+  6.50
+  8.00
+  9.50
+ 11.00
+ 12.50
+ 14.00
+ 15.50
+ 17.00
+ 18.50
 ```
 
 
