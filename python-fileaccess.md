@@ -125,6 +125,13 @@ Extract columns by name or by index (with the `values` attribute):
 >>> pressure = data.values[:,2]
 ```
 
+**References:**
+
+* [10 Minutes to pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+[pandas.pydata.org]
+* [Cookbook](http://pandas.pydata.org/pandas-docs/stable/cookbook.html)
+[pandas.pydata.org]
+
 
 ## JSON and YAML
 
