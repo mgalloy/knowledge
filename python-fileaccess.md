@@ -96,6 +96,36 @@ Swap endianness with:
 ```
 
 
+## Reading a CSV file
+
+Use pandas.
+```python
+>>> import pandas as pd
+```
+
+Read a NEON station file (courtesy JimA) with `read_csv`:
+```python
+>>> fn = '~/data/NEON/NEON.D04.LAJA.DP1.00004.001.00000.000.035.030.BP_30min.csv'
+>>> data = pd.read_csv(fn)
+```
+
+Peek at the data with `head`:
+```python
+>>> data.head()
+```
+
+What are the names of the column headers?
+```python
+>>> data.columns
+```
+
+Extract columns by name or by index (with the `values` attribute):
+```python
+>>> time = data['startDateTime']
+>>> pressure = data.values[:,2]
+```
+
+
 ## JSON and YAML
 
 JSON and YAML files can easily be created from a dict.
