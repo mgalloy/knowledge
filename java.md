@@ -113,3 +113,7 @@ use:
 
     java -cp ./dist/Foo.jar edu.colorado.csdms.mdpiper.Foo
 
+A better explanation of setting an application's entry point,
+and calling the application,
+can be found in Oracle's Java
+[docs](http://docs.oracle.com/javase/tutorial/deployment/jar/appman.html).
