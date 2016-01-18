@@ -559,4 +559,40 @@ This is a GitHub, not a git, thing, but nevertheless, use
 [https://github-issue-mover.appspot.com/](https://github-issue-mover.appspot.com/).
 
 
+## Keeping a feature branch in sync with the master branch
 
+I have a repository,
+[csdms/component_metadata](https://github.com/csdms/component_metadata),
+that has `master` and `hydrology` branches.
+I want changes to `master` to be synced
+to `hydrology` when appropriate.
+Here's my workflow.
+
+1. Start in the `master` branch.
+
+        git checkout master
+
+1. Make changes to files and commit.
+
+1. Push changes to both origin (mdpiper) and upstream (csdms) repositories.
+
+        git push origin master
+		git push upstream master
+
+1. Switch to the `hydrology` branch.
+
+        git checkout hydrology
+
+1. Fetch and merge from origin/master.
+
+        git fetch
+		git merge origin/master
+
+1. Push changes to origin and upstream repositories.
+
+        git push origin hydrology
+		git push upstream hydrology
+
+I could also push only to origin,
+then pull request into the upstream repository,
+but this is convenient for quick changes.
