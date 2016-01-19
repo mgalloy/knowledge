@@ -87,10 +87,23 @@ Install `boccatools`:
 
 **Todo:** Build and install other packages, including `esmf`, `coupling`, etc.
 
-### Setup
-
 After building, may need to set paths:
 
     PATH=$xprefix/bin:$xprefix/lib:$PATH
     LD_LIBRARY_PATH=$xprefix/lib:$LD_LIBRARY_PATH
 
+
+## Tests
+
+Try to load and run CEM after installing.
+In a Python/IPython session:
+
+    import os
+    from cmt.components import Cem
+	help(Cem)
+	cem = Cem()
+	d = cem.setup()
+	cem.initialize(os.path.join(d, 'cem.txt'))
+	cem.get_output_var_names()
+	cem.update()
+	cem.finalize()
