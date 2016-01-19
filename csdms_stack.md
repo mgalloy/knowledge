@@ -5,9 +5,12 @@ is the set of programs
 that are used to couple and run models
 in the CSDMS framework.
 
-Several models are included the CSDMS channel that can optionally be
+We use `conda` to build and manage the stack.
+Precompiled binaries are included in the `csdms` channel,
+along with several models that can optionally be
 installed along with the stack.
-
+A list of all the packages in the CSDMS channel can be found at
+[https://anaconda.org/csdms/packages](https://anaconda.org/csdms/packages).
 
 
 ## Install precompiled binaries
@@ -24,13 +27,14 @@ Install `conda`:
     curl http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -o miniconda.sh
     bash miniconda.sh -f -b -p $(pwd)/conda
 
-Install the stack without components (`cem` is included to get `cca-spec-babel`):
+Install the complete stack:
 
     conda install coupling csdms-cem -c csdms
+	# conda install stack -c csdms  # currently only in dev channel
 
 Alternately, install the stack using the CSDMS dev channel:
 
-    conda install coupling csdms-cem --override-channels -c csdms/channel/dev -c defaults
+	conda install stack --override-channels -c csdms/channel/dev -c defaults
 
 
 ## Build
@@ -98,12 +102,14 @@ After building, may need to set paths:
 Try to load and run CEM after installing.
 In a Python/IPython session:
 
-    import os
-    from cmt.components import Cem
-	help(Cem)
-	cem = Cem()
-	d = cem.setup()
-	cem.initialize(os.path.join(d, 'cem.txt'))
-	cem.get_output_var_names()
-	cem.update()
-	cem.finalize()
+```python
+import os
+from cmt.components import Cem
+help(Cem)
+cem = Cem()
+d = cem.setup()
+cem.initialize(os.path.join(d, 'cem.txt'))
+cem.get_output_var_names()
+cem.update()
+cem.finalize()
+```
