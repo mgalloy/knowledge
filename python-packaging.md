@@ -4,7 +4,7 @@ Packaging is complex.
 
 Eric recommends this tutorial:
 
-* [Installation & Packaging Tutorial](https://python-packaging-user-guide.readthedocs.org/en/latest/tutorial.html) [readthedocs.org]. It includes a [glossary](https://python-packaging-user-guide.readthedocs.org/en/latest/glossary.html) of packaging terms and a GitHub repo, [pypa/sampleproject](https://github.com/pypa/sampleproject).
+* [Installation & Packaging Tutorial](https://python-packaging-user-guide.readthedocs.org/en/latest/tutorial.html) [readthedocs.org]. It includes a [glossary](https://python-packaging-user-guide.readthedocs.org/en/latest/glossary/) of packaging terms and a GitHub repo, [pypa/sampleproject](https://github.com/pypa/sampleproject).
 
 Another article:
 
