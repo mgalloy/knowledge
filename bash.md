@@ -49,6 +49,19 @@ executing the second:
 	$ mkdir build && cd build
 
 
+## Capturing console output
+
+Redirect standard output to a file with `>`:
+```
+$ hydrotrend > run.log
+```
+
+Capture standard output and standard error with `2>`
+```
+$ hydrotrend 2> run.log
+```
+
+
 ## Copying a directory
 
 When using `cp` to copy a directory, a trailing `/` will copy the
@@ -65,7 +78,7 @@ This has vexed me for years!
 
 ## Recursively create subdirectories
 
-Recursively create subdirectories with the `-p` flag: 
+Recursively create subdirectories with the `-p` flag:
 
 	$ mkdir -p mpiper/examples/datastructures
 	$ mkdir -p foo/{src,lib,doc,etc}
