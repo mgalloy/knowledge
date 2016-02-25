@@ -11,8 +11,9 @@ See man pages on ***beach***:
 	$ man pbs
 	$ man pbs_resources
 
-Some helpful pages from a NASA site:
+Some helpful pages:
 
+* HPC@LSU documentation: [http://www.hpc.lsu.edu/docs/pbs.php](http://www.hpc.lsu.edu/docs/pbs.php)
 * [http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-PBS-Commands_174.html](http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-PBS-Commands_174.html)
 * [http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-QSUB-Options-in-PBS-Scripts-or-in-the-QSUB-Command-Line_175.html](http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-QSUB-Options-in-PBS-Scripts-or-in-the-QSUB-Command-Line_175.html)
 
