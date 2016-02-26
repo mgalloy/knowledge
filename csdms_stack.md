@@ -26,15 +26,18 @@ Install `conda`:
 
     curl http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -o miniconda.sh
     bash miniconda.sh -f -b -p $(pwd)/conda
+	PATH=$(pwd)/conda/bin:$PATH
 
-Install the complete stack:
+Optionally (but really, why not?) install `ipython`:
+```bash
+conda install ipython
+```
 
-    conda install coupling csdms-cem -c csdms
-	# conda install stack -c csdms  # currently only in dev channel
-
-Alternately, install the stack using the CSDMS dev channel:
-
-	conda install stack --override-channels -c csdms/channel/dev -c defaults
+Install the stack using the CSDMS dev channel:
+```bash
+conda install coupling wmt-exe --override-channels -c csdms/channel/dev -c defaults
+# conda install coupling wmt-exe -c csdms  # the main channel
+```
 
 
 ## Build
