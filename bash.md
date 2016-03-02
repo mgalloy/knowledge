@@ -56,9 +56,14 @@ Redirect standard output to a file with `>`:
 $ hydrotrend > run.log
 ```
 
-Capture standard output and standard error with `2>`
+Redirect standard error with `2>`
 ```
 $ hydrotrend 2> run.log
+```
+
+Redirect both standard error and standard output with `&>`
+```
+$ hydrotrend &> run.log
 ```
 
 

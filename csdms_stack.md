@@ -26,15 +26,98 @@ Install `conda`:
 
     curl http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -o miniconda.sh
     bash miniconda.sh -f -b -p $(pwd)/conda
+	PATH=$(pwd)/conda/bin:$PATH
 
-Install the complete stack:
+Optionally (but really, why not?) install `ipython`:
+```bash
+conda install ipython
+```
 
-    conda install coupling csdms-cem -c csdms
-	# conda install stack -c csdms  # currently only in dev channel
+Install the stack using the CSDMS dev channel:
+```bash
+conda install coupling wmt-exe --override-channels -c csdms/channel/dev -c defaults
+# conda install coupling wmt-exe -c csdms  # the main channel
+```
 
-Alternately, install the stack using the CSDMS dev channel:
 
-	conda install stack --override-channels -c csdms/channel/dev -c defaults
+## Tests
+
+Try to load and run CEM after installing.
+
+Start by creating an instance.
+```python
+from cmt.components import Cem
+cem = Cem()
+```
+
+Note that I can get help on the class.
+```python
+help(Cem)
+```
+
+Check the default parameter values.
+```python
+cem.defaults
+[('sediment_flux_flag', (1, '-')),
+ ('shoreface_depth', (10.0, 'm')),
+ ('shelf_slope', (0.001, '-')),
+ ('shoreface_slope', (0.01, '-')),
+ ('grid_spacing', (1000, 'm')),
+ ('number_of_cols', (1000, '-')),
+ ('number_of_rows', (50, '-')),
+ ('run_duration', (3650.0, 'd'))]
+```
+
+
+Initialize the model with the help of the `setup` method.
+```python
+d = cem.setup()
+cem.initialize(d + 'cem.txt')
+```
+
+Look at the current parameter values.
+```python
+cem.parameters
+[('sediment_flux_flag', 1),
+ ('shoreface_depth', 10.0),
+ ('shelf_slope', 0.001),
+ ('shoreface_slope', 0.01),
+ ('grid_spacing', 5000.0),
+ ('number_of_cols', 100),
+ ('number_of_rows', 300),
+ ('run_duration', 3650.0)]
+```
+
+Look at the input and output variable names.
+```python
+cem.get_input_var_names()
+('sea_surface_water_wave__azimuth_angle_of_opposite_of_phase_velocity',
+ 'basin_outlet_water_sediment~bedload__mass_flow_rate',
+ 'land_surface_water_sediment~bedload__mass_flow_rate',
+ 'sea_surface_water_wave__period',
+ 'basin_outlet_water_sediment~suspended__mass_flow_rate',
+ 'sea_surface_water_wave__height',
+ 'land_surface__elevation')
+
+cem.get_output_var_names()
+('basin_outlet~coastal_center__x_coordinate',
+ 'basin_outlet~coastal_water_sediment~bedload__mass_flow_rate',
+ 'land_surface__elevation',
+ 'sea_water__depth',
+ 'basin_outlet~coastal_center__y_coordinate')
+```
+
+Update the model.
+```python
+cem.update()
+```
+
+Finalize the model.
+```python
+cem.finalize()
+```
+
+See also @mcflugen's gist: https://gist.github.com/mcflugen/0ef5d40076628f06594f.
 
 
 ## Build
@@ -95,21 +178,3 @@ After building, may need to set paths:
 
     PATH=$xprefix/bin:$xprefix/lib:$PATH
     LD_LIBRARY_PATH=$xprefix/lib:$LD_LIBRARY_PATH
-
-
-## Tests
-
-Try to load and run CEM after installing.
-In a Python/IPython session:
-
-```python
-import os
-from cmt.components import Cem
-help(Cem)
-cem = Cem()
-d = cem.setup()
-cem.initialize(os.path.join(d, 'cem.txt'))
-cem.get_output_var_names()
-cem.update()
-cem.finalize()
-```
