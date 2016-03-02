@@ -258,3 +258,11 @@ On ***beach***, I've included this command in my **.bashrc**:
     source /usr/local/modules/init/bash
 
 to access CSDMS modules.
+
+
+## Grep for a hidden file
+
+Escape the period.
+For example to search for `.wmt` in all files in the **opt** directory:
+
+    $ grep -r "\.wmt" opt
