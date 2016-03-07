@@ -40,15 +40,11 @@ In particular, `tail`
 
 to see the latest errors.
 
-
-## Restart CSDMS web server
+Restart the CSDMS web server with
 
 	$ sudo /usr/local/httpd/bin/apachectl -k restart
 
-
-## FTP site
-
-FTP directory on ***river*** is **/data/ftp/pub/users/mapi8888**.
+My FTP directory on ***river*** is **/data/ftp/pub/users/mapi8888**.
 Users can access this site [here](http://csdms.colorado.edu/pub/users/mapi8888/).
 
 
