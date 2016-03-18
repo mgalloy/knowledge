@@ -596,3 +596,16 @@ Here's my workflow.
 I could also push only to origin,
 then pull request into the upstream repository,
 but this is convenient for quick changes.
+
+
+## Get id of latest commit
+
+Get the SHA of the latest commit in the current branch with:
+
+    $ git rev-parse HEAD
+	23a35f01c8f416f93ddd7b79f4620647ae936750
+
+or, better, the abbreviated SHA:
+
+    $ git rev-parse --short HEAD
+	23a35f0
