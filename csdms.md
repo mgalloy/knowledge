@@ -27,6 +27,10 @@ Can login directly:
 
     $ ssh mapi8461@beach-nfs
 
+Check my disk quota:
+
+    $ quota -s
+
 
 ## River (webserver)
 
