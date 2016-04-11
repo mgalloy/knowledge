@@ -271,3 +271,23 @@ Escape the period.
 For example to search for `.wmt` in all files in the **opt** directory:
 
     $ grep -r "\.wmt" opt
+
+
+## Operate on results returned by find
+
+Use the `-exec` flag to perform operations on the results returned
+from `find`.
+
+For example, get a long directory listing on the results of searching
+files named **wmt.yaml**:
+
+    $ find . -name wmt.yaml -exec ls -l {} \;
+
+Here, `{}` is a result from `find`,
+and `\;` terminates the operation.
+
+Here's what I actually wanted to do:
+
+    $ sudo find . -name wmt.yaml -exec chmod g+w {} \;
+
+And it worked!
