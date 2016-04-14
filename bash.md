@@ -66,6 +66,11 @@ Redirect both standard error and standard output with `&>`
 $ hydrotrend &> run.log
 ```
 
+Redirect stdout and stder to separate files with `1>` and `2>`
+```
+$ hydrotrend 1> hydrotrend.stdout 2> hydrotrend.stderr
+```
+
 
 ## Copying a directory
 
