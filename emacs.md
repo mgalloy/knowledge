@@ -118,6 +118,14 @@ Alternately, use
 
     C-x C-v RET
 
+## Apply .emacs after editing
+
+Use
+
+    M-x eval-buffer
+
+which evaluates the code in a buffer.
+
 ## Access menubar in console mode
 
 Starting emacs with `-nw` displays the menubar in a terminal.
