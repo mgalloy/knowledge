@@ -3,6 +3,12 @@
 NCL is the NCAR Command Language.
 
 
+## Documentation
+
+* The NCL [home page](https://www.ncl.ucar.edu/index.shtml) [ucar.edu]
+* [A list of functions by category](https://www.ncl.ucar.edu/Document/Functions/index.shtml) [ucar.edu]
+
+
 ## Strings
 
 String need double, not single, quotes:
