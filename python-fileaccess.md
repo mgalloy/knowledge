@@ -253,23 +253,28 @@ array([[[ 20.,  20.,  20., ...,  20.,  20.,  20.],
 
 Close the file:
 ```python
-T_id.close()
+>>> T_id.close()
 ```
 
-What modifying a variable in place?
+What about modifying variables?
 Open the file in "append" mode ("read" mode is the default):
 ```python
 >>> T_id = netCDF4.Dataset(T_file, 'a')
 ```
 
-I can rename a variable:
+Change the value of a variable, but don't lose the reference:
+```python
+>>> T_id.variables['atmosphere_bottom_air__temperature'][:] = new_values[:]
+```
+
+I can also rename a variable:
 ```python
 >>> T_id.renameVariable('atmosphere_bottom_air__temperature', 'T0')
 ```
 
 Close the file:
 ```python
-T_id.close()
+>>> T_id.close()
 ```
 
 

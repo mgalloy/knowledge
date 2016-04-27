@@ -33,6 +33,7 @@ A `0` value traditionally indicates success; anything else is failure.
 
 I've also used this to exit a script after a test:
 
+	#!/usr/bin/env bash
 	test -d $target
 	exit $?
 
@@ -66,7 +67,7 @@ Redirect both standard error and standard output with `&>`
 $ hydrotrend &> run.log
 ```
 
-Redirect stdout and stder to separate files with `1>` and `2>`
+Redirect stdout and stderr to separate files with `1>` and `2>`
 ```
 $ hydrotrend 1> hydrotrend.stdout 2> hydrotrend.stderr
 ```
