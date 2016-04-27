@@ -110,9 +110,13 @@ for ideas, but use *el-get* for package management.
 ## Refresh file in buffer
 
 If a file in a buffer has changed on disk,
-refresh it in emacs with:
+refresh it with
 
 	M-x revert-buffer
+
+Alternately, use
+
+    C-x C-v RET
 
 ## Access menubar in console mode
 
