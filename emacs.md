@@ -88,25 +88,6 @@ Autocomplete local Python variables with:
 
 	M-\
 
-## JavaScript mode
-
-Start JavaScript mode with:
-
-	M-x js-mode
-
-This is also helpful for working with JSON (indenting, no validation).
-However,
-I also installed `json-mode`,
-which should start automatically when a JSON file is loaded.
-
-## Python IDE
-
-I'd like to use emacs as my Python IDE. Use this page:
-
-[http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/](http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/)
-
-for ideas, but use *el-get* for package management.
-
 ## Refresh file in buffer
 
 If a file in a buffer has changed on disk,
@@ -114,9 +95,19 @@ refresh it with
 
 	M-x revert-buffer
 
+(I've mapped this to a keybinding, `C-c r`)
+
 Alternately, use
 
     C-x C-v RET
+
+## Untabify a file
+
+Use
+
+    M-x untabify
+
+Note that a tab can always be forced with `C-q TAB`.
 
 ## Apply .emacs after editing
 
@@ -142,6 +133,25 @@ this sequence is bound to `Fn-F10`
 Highlight region and apply:
 
 	M-x json-reformat-region
+
+## JavaScript mode
+
+Start JavaScript mode with:
+
+	M-x js-mode
+
+This is also helpful for working with JSON (indenting, no validation).
+However,
+I also installed `json-mode`,
+which should start automatically when a JSON file is loaded.
+
+## Python IDE
+
+I'd like to use emacs as my Python IDE. Use this page:
+
+[http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/](http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/)
+
+for ideas, but use *el-get* for package management.
 
 ## Colors
 
