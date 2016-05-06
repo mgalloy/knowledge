@@ -89,3 +89,15 @@ as an example.
 * [PEP 420](https://www.python.org/dev/peps/pep-0420/) [python.org]
 * [Discussion on stackoverflow](http://stackoverflow.com/a/1676069/1563298) [stackoverflow.com]
 * An informative [blog post](http://cdent.tumblr.com/post/216241761/python-namespace-packages-for-tiddlyweb) [tumblr.com]
+
+
+## Upload to PyPI
+
+The [Python Package Index](https://pypi.python.org/pypi) (PyPI)
+allows public access to a package through `pip`.
+I used instructions from
+[this](http://peterdowns.com/posts/first-time-with-pypi.html) blog post
+to publish a [package](https://pypi.python.org/pypi/basic-modeling-interface)
+on PyPI.
+[Here's](https://docs.python.org/2/distutils/packageindex.html)
+the offical documentation.
