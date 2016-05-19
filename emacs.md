@@ -117,6 +117,25 @@ Use
 
 which evaluates the code in a buffer.
 
+## Printing
+
+I've had the best luck with output to B/W PostScript.
+
+1. Create PostScript code from the current buffer.
+
+        M-x ps-spool-buffer
+
+   The PS code is created in a new buffer.
+1. Save the PS buffer to a new file (e.g., **foo.ps**).
+1. Run `ps2pdf` on the PS file.
+
+        $ ps2pdf foo.ps
+
+   This makes a new file, **foo.ps.pdf**.
+
+
+See also [PostScript Hardcopy](https://www.gnu.org/software/emacs/manual/html_node/emacs/PostScript.html). [gnu.org]
+
 ## Access menubar in console mode
 
 Starting emacs with `-nw` displays the menubar in a terminal.
