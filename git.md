@@ -47,29 +47,6 @@ This is the _working directory_.
 Specifying the name of the clone (as in the second example) is optional.
 
 
-## Remotes
-
-What remote repository am I working on?
-
-	$ git remote
-	origin
-	$ git remote -v
-	origin	https://github.com/mdpiper/wmt.git (fetch)
-	origin	https://github.com/mdpiper/wmt.git (push)
-
-Add the upstream repo to the list of remotes for the local repo:
-
-    $ git remote add upstream https://github.com/csdms/wmt.git
-
-now:
-
-	$ git remote -v
-	origin	https://github.com/mdpiper/wmt.git (fetch)
-	origin	https://github.com/mdpiper/wmt.git (push)
-	upstream	https://github.com/csdms/wmt.git (fetch)
-	upstream	https://github.com/csdms/wmt.git (push)
-
-
 ## Status
 
 Check the status of files in the working directory:
@@ -146,6 +123,42 @@ Here's a sample result:
 Simpler: just the last three commits, please:
 
 	$ git log -3
+
+
+## Get id of latest commit
+
+Get the SHA of the latest commit in the current branch with:
+
+    $ git rev-parse HEAD
+	23a35f01c8f416f93ddd7b79f4620647ae936750
+
+or, better, the abbreviated SHA:
+
+    $ git rev-parse --short HEAD
+	23a35f0
+
+
+## Remotes
+
+What remote repository am I working on?
+
+	$ git remote
+	origin
+	$ git remote -v
+	origin	https://github.com/mdpiper/wmt.git (fetch)
+	origin	https://github.com/mdpiper/wmt.git (push)
+
+Add the upstream repo to the list of remotes for the local repo:
+
+    $ git remote add upstream https://github.com/csdms/wmt.git
+
+now:
+
+	$ git remote -v
+	origin	https://github.com/mdpiper/wmt.git (fetch)
+	origin	https://github.com/mdpiper/wmt.git (push)
+	upstream	https://github.com/csdms/wmt.git (fetch)
+	upstream	https://github.com/csdms/wmt.git (push)
 
 
 ## Push
@@ -256,6 +269,70 @@ then retrieve them later with:
     git stash pop
 
 
+## Fetch a specific file or directory from a repo
+
+1. `cd` to the root directory of the repo
+1. `git fetch`
+1. `git checkout HEAD path/to/dir/or/file`
+
+**Reference:**
+
+* [http://stackoverflow.com/a/4048993/1563298](http://stackoverflow.com/a/4048993/1563298)
+
+
+## Fetch a specific branch from a repo
+
+Let's say I've just cloned a repo; e.g., **wmt-client**.
+Only the master branch is fetched, by default.
+To get another branch, say `update-parameter-table`:
+
+1. `cd` to the root directory of the repo
+1. `git fetch`
+1. `git checkout update-parameter-table`
+
+Note that after the fetch,
+the name of the other branch still won't be shown.
+
+
+## Keeping a feature branch in sync with the master branch
+
+I have a repository,
+[csdms/component_metadata](https://github.com/csdms/component_metadata),
+that has `master` and `hydrology` branches.
+I want changes to `master` to be synced
+to `hydrology` when appropriate.
+Here's my workflow.
+
+1. Start in the `master` branch.
+
+        git checkout master
+
+1. Make changes to files and commit.
+
+1. Push changes to both origin (mdpiper) and upstream (csdms) repositories.
+
+        git push origin master
+		git push upstream master
+
+1. Switch to the `hydrology` branch.
+
+        git checkout hydrology
+
+1. Fetch and merge from origin/master.
+
+        git fetch
+		git merge origin/master
+
+1. Push changes to origin and upstream repositories.
+
+        git push origin hydrology
+		git push upstream hydrology
+
+I could also push only to origin,
+then pull request into the upstream repository,
+but this is convenient for quick changes.
+
+
 ## Rebase
 
 I've been persisting a few branches on `mdpiper/wmt` (e.g.,
@@ -281,31 +358,6 @@ Use `git rebase` to pull the changes from `master` into `foo`:
 This
 [article](http://mettadore.com/analysis/a-simple-git-rebase-workflow-explained/)
 helpfully explains branching and rebasing.
-
-
-## Fetch a specific file or directory from a repo
-
-1. `cd` to the root directory of the repo
-1. `git fetch`
-1. `git checkout HEAD path/to/dir/or/file`
-
-**Reference:**
-
-* [http://stackoverflow.com/a/4048993/1563298](http://stackoverflow.com/a/4048993/1563298)
-
-
-## Fetch a specific branch from a repo
-
-Let's say I've just cloned a repo; e.g., **wmt-client**.
-Only the master branch is fetched, by default.
-To get another branch, say `update-parameter-table`:
-
-1. `cd` to the root directory of the repo
-1. `git fetch`
-1. `git checkout update-parameter-table`
-
-Note that after the fetch,
-the name of the other branch still won't be shown.
 
 
 ## Orphan branch
@@ -336,6 +388,21 @@ I named `reference/original-fortran`:
 
 * This is for GitHub Pages, but it's exactly what I needed:
   [https://help.github.com/articles/creating-project-pages-manually/](https://help.github.com/articles/creating-project-pages-manually/)
+
+
+## Submodules
+
+After cloning a repository that includes submodules,
+run:
+
+    $ git submodule init
+	$ git submodule update
+
+Moving a submodule is a [pain](http://stackoverflow.com/a/6310246/1563298). [stackoverflow.com]
+
+**Reference:**
+
+* [https://git-scm.com/book/en/v2/Git-Tools-Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 
 ## Pull request
@@ -398,6 +465,25 @@ Last, I pushed the changes back to `mdpiper/wmt`:
 Also see [this](https://help.github.com/articles/syncing-a-fork)
 Github help article, "Syncing a fork".
 
+
+## Resolving conflicts
+
+This is an expanded take on the process described
+in the **Pull request** section above.
+
+    $ git checkout master  # get the latest master branch
+	$ git pull
+	$ git checkout my-branch  # where I've made changes that conflict
+	$ git merge master
+	$ emacs foo.py  # manually edit to fix conflict
+	$ git add foo.py
+	$ git commit
+	$ git push
+	$ git checkout master
+	$ git branch -D my-branch  # delete feature branch locally
+	$ git push origin :my-branch  # and on GitHub
+
+
 ## Merging a fork with the master, I
 
 See these Github help articles:
@@ -426,6 +512,7 @@ as what Eric did; I'll check with him).
 **Update**: Although this works, it's not technically the correct way
   to do this. (I shouldn't have my own version of the upstream
   repository `csdms/wmt` to merge into.) Better information follows.
+
 
 ## Merging a fork with the master, II
 
@@ -538,74 +625,10 @@ The example is for [storm](https://github.com/csdms-contrib/storm),
 which had an existing repo on GitHub.
 
 
-## Submodules
-
-After cloning a repository that includes submodules,
-run:
-
-    $ git submodule init
-	$ git submodule update
-
-Moving a submodule is a [pain](http://stackoverflow.com/a/6310246/1563298). [stackoverflow.com]
-
-**Reference:**
-
-* [https://git-scm.com/book/en/v2/Git-Tools-Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
-
-
 ## Moving an issue across repos
 
 This is a GitHub, not a git, thing, but nevertheless, use
 [https://github-issue-mover.appspot.com/](https://github-issue-mover.appspot.com/).
 
 
-## Keeping a feature branch in sync with the master branch
 
-I have a repository,
-[csdms/component_metadata](https://github.com/csdms/component_metadata),
-that has `master` and `hydrology` branches.
-I want changes to `master` to be synced
-to `hydrology` when appropriate.
-Here's my workflow.
-
-1. Start in the `master` branch.
-
-        git checkout master
-
-1. Make changes to files and commit.
-
-1. Push changes to both origin (mdpiper) and upstream (csdms) repositories.
-
-        git push origin master
-		git push upstream master
-
-1. Switch to the `hydrology` branch.
-
-        git checkout hydrology
-
-1. Fetch and merge from origin/master.
-
-        git fetch
-		git merge origin/master
-
-1. Push changes to origin and upstream repositories.
-
-        git push origin hydrology
-		git push upstream hydrology
-
-I could also push only to origin,
-then pull request into the upstream repository,
-but this is convenient for quick changes.
-
-
-## Get id of latest commit
-
-Get the SHA of the latest commit in the current branch with:
-
-    $ git rev-parse HEAD
-	23a35f01c8f416f93ddd7b79f4620647ae936750
-
-or, better, the abbreviated SHA:
-
-    $ git rev-parse --short HEAD
-	23a35f0
