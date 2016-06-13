@@ -31,6 +31,10 @@ Check my disk quota:
 
     $ quota -s
 
+I've purchased additional storage for ***beach***.
+The drive is automounted as **/nas/data**,
+and is available from the head and compute nodes.
+
 
 ## River (webserver)
 
