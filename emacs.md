@@ -109,6 +109,17 @@ Use
 
 Note that a tab can always be forced with `C-q TAB`.
 
+## Indenting code
+
+This may only work in `python-mode`,
+but shift to the left with
+
+    C-c <
+
+and shift to the right with
+
+    C-c >
+
 ## Apply .emacs after editing
 
 Use
