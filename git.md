@@ -585,6 +585,20 @@ provided by the AstroPy people.
 These steps have worked successfully for me.
 
 
+## Get repo stats
+
+Get stats on the changes to a repo since a specified commit.
+For example, in `wmt-selector`:
+
+```
+$ git diff --stat 06ff4cdd0a581dd23f9a36e251709602c8f088dc
+ .gitignore |   2 +
+ cover.css  | 207 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ csdms.ico  | Bin 0 -> 1150 bytes
+ index.html | 100 ++++++++++++++++++++++++++++++++++
+ 4 files changed, 309 insertions(+)
+```
+
 ## Splitting a repository
 
 I want to split a subpath into a new repository. E.g., I have:
