@@ -297,3 +297,10 @@ Here's what I actually wanted to do:
     $ sudo find . -name wmt.yaml -exec chmod g+w {} \;
 
 And it worked!
+
+
+## Delete files returned by find
+
+Use the `delete` flag:
+
+    $ find . -iname *.tmpl -delete
