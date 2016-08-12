@@ -2,21 +2,12 @@
 
 Packaging is complex. 
 
-Eric recommends this tutorial:
+* The official Python 2 [docs](https://docs.python.org/2/tutorial/modules.html#packages) that define a package.
+* This tutorial -- [Packaging and Distributing Projects](https://packaging.python.org/distributing/) -- is the best. It includes a [glossary](https://packaging.python.org/glossary/) of packaging terms and a GitHub repo, [pypa/sampleproject](https://github.com/pypa/sampleproject).
+* I also found this article useful: [Use setup.py to Deploy Your Python App with Style](http://www.siafoo.net/article/77)
 
-* [Installation & Packaging Tutorial](https://python-packaging-user-guide.readthedocs.org/en/latest/tutorial.html) [readthedocs.org]. It includes a [glossary](https://python-packaging-user-guide.readthedocs.org/en/latest/glossary/) of packaging terms and a GitHub repo, [pypa/sampleproject](https://github.com/pypa/sampleproject).
-
-Another article:
-
-* [Use setup.py to Deploy Your Python App with Style](http://www.siafoo.net/article/77)
-
-Eric has constructed the [csdms/coupling](https://github.com/csdms/coupling)
-repo as a package,
-and I'm working on
-[csdms/packagebuilder](https://github.com/csdms/packagebuilder).
-I think I did a good job with
-[csdms/dakota](https://github.com/csdms/dakota);
-maybe it can be my canonical reference.
+Eric's canonical packaging example is https://github.com/csdms/standard_names.
+Mine is https://github.com/csdms/dakota.
 
 An
 [example](https://docs.python.org/2/distutils/setupscript.html#installing-scripts)
@@ -26,22 +17,13 @@ Packages are installed to `{prefix}/lib/pythonX.Y/site-packages`;
 e.g., **/usr/local/lib/python2.7/site-packages/**.
 
 
-## Virtualenv
-
-Installing
-[virtualenv](http://virtualenv.readthedocs.org/en/latest/virtualenv.html).
-And an
-[example](http://matthew-brett.github.io/pydagogue/installing_scripts.html)
-of using it to install a package.
-Virtualenv is really
-[the only way](http://stackoverflow.com/questions/11170827/how-tell-python-script-to-use-particular-version)
-to force a Python script to use a particular Python version.
-
-
 ## Setuptools
 
 Documentation for
-[setuptools](https://pythonhosted.org/setuptools/setuptools.html).
+[setuptools](https://setuptools.readthedocs.io/en/latest/index.html),
+in particular,
+[building and distributing packages](https://setuptools.readthedocs.io/en/latest/setuptools.html)
+with setuptools.
 
 The standard call to install a package:
 
@@ -101,3 +83,18 @@ to publish a [package](https://pypi.python.org/pypi/basic-modeling-interface)
 on PyPI.
 [Here's](https://docs.python.org/2/distutils/packageindex.html)
 the offical documentation.
+
+
+## Virtualenv
+
+Installing
+[virtualenv](http://virtualenv.readthedocs.org/en/latest/virtualenv.html).
+And an
+[example](http://matthew-brett.github.io/pydagogue/installing_scripts.html)
+of using it to install a package.
+Virtualenv is really
+[the only way](http://stackoverflow.com/questions/11170827/how-tell-python-script-to-use-particular-version)
+to force a Python script to use a particular Python version.
+
+**Note:** I've moved away from virtualenv in favor of using
+disposable Miniconda distributions.
