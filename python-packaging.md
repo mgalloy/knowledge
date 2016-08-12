@@ -52,6 +52,18 @@ See other commands with:
 
 	$ python setup.py --help-commands
 
+### Dependencies
+
+I've been a little confused about how dependencies are handled
+by setuptools.
+Here are two articles that helped:
+
+* [install_requires vs Requirements files](https://packaging.python.org/requirements/)
+* [setup.py vs requirements.txt](https://caremad.io/2013/07/setup-vs-requirement/)
+
+I'm using `install_requires` now,
+because I haven't yet needed to specify versions for dependencies.
+
 
 ## Pip
 
