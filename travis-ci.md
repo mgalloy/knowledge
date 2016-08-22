@@ -19,8 +19,6 @@ Briefly, they are:
 
 My projects can be found at [travis-ci.org](https://travis-ci.org/).
 
-Validate a **.travis.yaml** file at
-[Travis WebLint](http://lint.travis-ci.org/).
 
 ## General
 
@@ -33,14 +31,33 @@ The lifecycle of a Travis CI build:
 1. `after_success` or `after_failure`
 1. `after_script`
 
+The only two required steps are `install` and `script`.
 More detail at
 [http://docs.travis-ci.com/user/build-lifecycle/](http://docs.travis-ci.com/user/build-lifecycle/).
+
+### Command-line tool
+
+Install the `travis` command with:
+
+    [sudo] gem install travis --no-rdoc --no-ri
+
+
+### Validation
+
+Validate a **.travis.yaml** file online at
+[Travis WebLint](http://lint.travis-ci.org/).
+
+Or use the `travis lint` command:
+
+    travis lint .travis.yaml
+
 
 ### Container-based infrastructure
 
 If you don't need `sudo` in your Travis script,
 you can use the new Docker-based infrastructure.
 See the article [here](http://docs.travis-ci.com/user/migrating-from-legacy/).
+
 
 ### Other
 
@@ -122,3 +139,23 @@ See [this](http://conda.pydata.org/docs/travis.html)
 article
 and [this](https://github.com/csdms/bmi-python/blob/master/.travis.yml)
 **.travis.yml** file.
+
+
+### Encrypt an Anaconda token
+
+Anaconda Cloud provides a token for uploading a package from Travis.
+The token is unencrypted.
+Encrypt it with `travis encrypt`.
+E.g.:
+
+```
+$ travis encrypt "ANACONDA_TOKEN=md-6arvr3vntv0tnvtv..."
+Please add the following to your .travis.yml file:
+
+  secure: "poQomlxrnv35qnvntnbnv..."
+
+Pro Tip: You can add it automatically by running with --add.
+```
+
+Automatically adding this item messes up the formatting
+in my **.travis.yaml** file.
