@@ -294,6 +294,24 @@ Note that after the fetch,
 the name of the other branch still won't be shown.
 
 
+## Tagging a release
+
+Make sure all version strings match
+(e.g., in package, in conda recipe),
+then commit (optionally with `[ci skip]` for Travis CI)
+and push changes.
+
+Create a tag for the release that starts with `v`; e.g.:
+
+    git tag v0.2.1
+
+Push the tag to the remote:
+
+    git push --tags
+
+Note that Travis will start a build based on the new tag.
+
+
 ## Keeping a feature branch in sync with the master branch
 
 I have a repository,
