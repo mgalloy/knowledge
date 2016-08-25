@@ -1,10 +1,12 @@
 # Python packaging 
 
-Packaging is complex. 
+Packaging is complex
+and often doesn't have anything to do with Python itself.
 
 * The official Python 2 [docs](https://docs.python.org/2/tutorial/modules.html#packages) that define a package.
 * This tutorial -- [Packaging and Distributing Projects](https://packaging.python.org/distributing/) -- is the best. It includes a [glossary](https://packaging.python.org/glossary/) of packaging terms and a GitHub repo, [pypa/sampleproject](https://github.com/pypa/sampleproject).
 * I also found this article useful: [Use setup.py to Deploy Your Python App with Style](http://www.siafoo.net/article/77)
+* A neat article on the history of Python packaging: [Python Packaging Is Good Now](https://glyph.twistedmatrix.com/2016/08/python-packaging.html)
 
 Eric's canonical packaging example is https://github.com/csdms/standard_names.
 Mine is https://github.com/csdms/dakota.
