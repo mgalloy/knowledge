@@ -118,13 +118,23 @@ This is my new favorite thing:
 	/usr/bin/gfortran
 
 
-## Recursive grep
+## Grepping with grep
 
-Because I keep forgetting:
+Recursively search subdirectories for a pattern:
 
 	$ grep -i -r "python" .
 
 Don't forget the path specification at the end.
+
+Include only files that match a glob:
+
+    $ grep -r --include=*.ncl ILAMB_PARA_SETUP .
+
+Grep for a hidden file by escaping the period.
+For example,
+to search for `.wmt` in all files in the **opt** directory:
+
+    $ grep -r "\.wmt" opt
 
 
 ## Recursive chmod
@@ -269,14 +279,6 @@ On ***beach***, I've included this command in my **.bashrc**:
     source /usr/local/modules/init/bash
 
 to access CSDMS modules.
-
-
-## Grep for a hidden file
-
-Escape the period.
-For example to search for `.wmt` in all files in the **opt** directory:
-
-    $ grep -r "\.wmt" opt
 
 
 ## Operate on results returned by find
