@@ -45,3 +45,23 @@ However, a variable can be clobbered with the reassignment operator `:=`
 
     x = "Hi there"
 	x := (/1,2,3/) ; works
+
+
+## Type and type conversion
+
+Use `typeof` to determine the type of a variable.
+
+    y = 5.0
+	print("The type of y is " + typeof(y))
+
+There are a set of "XtoY" functions
+(although they are inconsistently named)
+for converting a variable
+from one type to another.
+For example,
+to convert `y` from float to integer, use
+
+    y := floattointeger(y)
+	print("The type of y is " + typeof(y))
+
+Be sure to use `:=` to reassign the variable `y`.
