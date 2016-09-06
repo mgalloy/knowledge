@@ -48,8 +48,6 @@ in **site-packages** instead of installing an egg:
 	$ python setup.py develop
 	$ python setup.py develop --uninstall
 
-Can't use `pip` to uninstall a package installed with `develop`.
-
 See other commands with:
 
 	$ python setup.py --help-commands
@@ -67,12 +65,22 @@ Here are a few articles that helped:
 I'm using `install_requires` now,
 because I haven't yet needed to specify versions for dependencies.
 
+Fascinatingly,
+`install_requires` processes the listed dependencies
+from right to left.
+So,
+
+    install_requires=('numpy', 'netCDF4')  # bad!
+	install_requires=('netCDF4', 'numpy')  # good!
 
 ## Pip
 
 Uninstall with `pip`:
 
 	$ pip uninstall foo
+
+Note: can't use `pip` to uninstall a package
+installed with setuptools' `develop` command.
 
 
 ## Namespace packages
