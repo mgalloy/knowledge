@@ -58,10 +58,11 @@ See other commands with:
 
 I've been a little confused about how dependencies are handled
 by setuptools.
-Here are two articles that helped:
+Here are a few articles that helped:
 
-* [install_requires vs Requirements files](https://packaging.python.org/requirements/)
-* [setup.py vs requirements.txt](https://caremad.io/2013/07/setup-vs-requirement/)
+* [install_requires vs Requirements files](https://packaging.python.org/requirements/) [python.org]
+* [setup.py vs requirements.txt](https://caremad.io/2013/07/setup-vs-requirement/) [caremad.io]
+* [setup.py, requirements.txt or a combination?](https://www.reddit.com/r/Python/comments/3uzl2a/setuppy_requirementstxt_or_a_combination/) [reddit.com]
 
 I'm using `install_requires` now,
 because I haven't yet needed to specify versions for dependencies.
