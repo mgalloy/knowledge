@@ -94,6 +94,8 @@ Recursively create subdirectories with the `-p` flag:
 	$ mkdir -p mpiper/examples/datastructures
 	$ mkdir -p foo/{src,lib,doc,etc}
 
+Don't include spaces between the comma-delimited subdirectories!
+
 
 ## Exclude from directory listing
 
