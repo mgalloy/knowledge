@@ -30,7 +30,7 @@ project.
 		git submodule add https://github.com/numpy/numpydoc
 		
    This clones `numpydoc` into **docs** and adds it to **.gitmodules**.
-   
+
 1. Edit **source/conf.py** to use `numpydoc`. Also update project name,
    author, and version information.
 
@@ -44,3 +44,11 @@ project.
    Output will be in **_build/html/index.html**.
 
 Check out the results at http://bmi-python.readthedocs.io.
+
+
+**Addendum:**
+At a later point, when cloning the main repository (in this example,
+[bmi-forum/bmi-python](https://github.com/bmi-forum/bmi-python)),
+manually fetch the contents of the `numpydoc` submodule with
+
+    git submodule update --init --recursive
