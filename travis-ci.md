@@ -144,12 +144,19 @@ and [this](https://github.com/csdms/bmi-python/blob/master/.travis.yml)
 ### Encrypt an Anaconda token
 
 Anaconda Cloud provides a token for uploading a package from Travis.
+It's available at the bottom of the Access page
+of the Anaconda Cloud account --
+for [csdms](https://anaconda.org/csdms/settings/access)
+and for [csdms-stack](https://anaconda.org/csdms-stack/settings/access)
+(and for [mdpiper](https://anaconda.org/mdpiper/settings/access)).
 The token is unencrypted.
-Encrypt it with `travis encrypt`.
+Switch to the root directory of the project and
+encrypt it with `travis encrypt`.
 E.g.:
 
 ```
-$ travis encrypt "ANACONDA_TOKEN=md-6arvr3vntv0tnvtv..."
+$ cd dakota
+$ travis encrypt "ANACONDA_TOKEN=cs-070ce8d2-05bb..."
 Please add the following to your .travis.yml file:
 
   secure: "poQomlxrnv35qnvntnbnv..."
