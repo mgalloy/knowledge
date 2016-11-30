@@ -297,11 +297,11 @@ the name of the other branch still won't be shown.
 ## Tagging a release
 
 Make sure all version strings match
-(e.g., in package, in conda recipe),
-then commit (optionally with `[ci skip]` for Travis CI)
+(e.g., in package definition, in conda recipe, in docs),
+then commit (don't `[ci skip]`!)
 and push changes.
 
-Create a tag for the release that starts with `v`; e.g.:
+Create a tag for the release that starts with "v"; e.g.:
 
     git tag v0.2.1
 
