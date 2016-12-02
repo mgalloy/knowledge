@@ -82,6 +82,18 @@ and a particular line number:
 
     M-g g <number>
 
+## Search and replace
+
+Perform an interactive search and replace with
+
+    M-% <search term> RET <replace term>
+
+And you can copy-paste into the minibuffer.
+
+Do a global replace with
+
+    M-x replace-string RET <current> RET <new> RET
+
 ## Autocomplete local variables
 
 Autocomplete local Python variables with:
