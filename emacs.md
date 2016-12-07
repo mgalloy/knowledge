@@ -113,6 +113,15 @@ Alternately, use
 
     C-x C-v RET
 
+## Show full filepath in minibuffer
+
+The full filepath is stored in a variable, `buffer-file-name`.
+I added a function, `show-file-name`,
+to my **.emacs**.
+Call it with
+
+    M-x show-file-name
+
 ## Untabify a file
 
 Use
@@ -139,6 +148,12 @@ Use
     M-x eval-buffer
 
 which evaluates the code in a buffer.
+
+## Evaluate a variable
+
+Use `M-:`; e.g.,
+
+    M-: buffer-file-name
 
 ## Printing
 
