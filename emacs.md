@@ -141,6 +141,17 @@ and shift to the right with
 
     C-c >
 
+
+## Transpose characters
+
+Transpose characters with `C-t`.
+The character under the cursor is swapped
+with the previous character.
+
+(I used this all the time in vi,
+and I happened upon it in Emacs!)
+
+
 ## Apply .emacs after editing
 
 Use
