@@ -308,3 +308,18 @@ And it worked!
 Use the `delete` flag:
 
     $ find . -iname *.tmpl -delete
+
+
+## Traps
+
+Traps are like a CATCH in IDL;
+they execute a command when a signal is caught.
+For example,
+if the following `trap` statement is in a script:
+
+    trap "rm -rf working" EXIT
+	
+then, when the script exits (successfully or not),
+the command `rm -rf working` is executed.
+
+Reference: http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html.
