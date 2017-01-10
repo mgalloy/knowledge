@@ -138,6 +138,12 @@ to search for `.wmt` in all files in the **opt** directory:
 
     $ grep -r "\.wmt" opt
 
+Exclude directories:
+
+    $ grep -r --exclude-dir={convert,relationships} --include="*\.ncl" \"nee\" .
+
+I am the grep master. Don't mess with me.
+
 
 ## Recursive chmod
 
