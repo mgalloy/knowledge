@@ -84,9 +84,40 @@ Request two nodes, but only four processors on each:
 
 	#PBS -l nodes=2:ppn=4
 
-You can also request a specific compute node:
+## Specify a node for a job
 
-	#PBS -l nodes=compute-2-4:ppn=2
+Probably shouldn't do this since it's the scheduler's job,
+but,
+to specify a particular node on which to run a job,
+use the `nodes` keyword:
+
+    #PBS -l nodes=compute-2-4
+
+## Which nodes belong to which queues?
+
+Also,
+
+* What jobs are running on which nodes?
+* How much memory does a node have?
+
+To answer these questions (and more!),
+use the `pbsnodes` command:
+
+    $ pbsnodes
+
+You can also check a particular node:
+
+```
+$ pbsnodes compute-0-2
+compute-0-2
+     state = free
+     np = 8
+     properties = debug
+     ntype = cluster
+     status = rectime=1484853611,varattr=,jobs=,state=free,size=217642636kb:219059416kb,netload=28526413744,gres=,loadave=0.01,ncpus=8,physmem=16463720kb,availmem=16383020kb,totmem=17487716kb,idletime=217,nusers=0,nsessions=0,uname=Linux compute-0-2.local 2.6.32-504.el6.x86_64 #1 SMP Wed Oct 15 04:27:16 UTC 2014 x86_64,opsys=linux
+     mom_service_port = 15002
+     mom_manager_port = 15003
+```
 
 ## Job chaining
 
