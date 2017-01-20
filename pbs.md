@@ -13,9 +13,10 @@ See man pages on ***beach***:
 
 Some helpful pages:
 
-* HPC@LSU documentation: [http://www.hpc.lsu.edu/docs/pbs.php](http://www.hpc.lsu.edu/docs/pbs.php)
-* [http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-PBS-Commands_174.html](http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-PBS-Commands_174.html)
-* [http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-QSUB-Options-in-PBS-Scripts-or-in-the-QSUB-Command-Line_175.html](http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-QSUB-Options-in-PBS-Scripts-or-in-the-QSUB-Command-Line_175.html)
+* HPC@LSU documentation: http://www.hpc.lsu.edu/docs/pbs.php
+* http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-PBS-Commands_174.html
+* http://www.nas.nasa.gov/hecc/support/kb/Commonly-Used-QSUB-Options-in-PBS-Scripts-or-in-the-QSUB-Command-Line_175.html
+* Moab commands: http://docs.adaptivecomputing.com/mwm/6-1-9/Content/a.gcommandoverview.html
 
 ## Submit a job
 
