@@ -74,7 +74,7 @@ Note that, unlike subversion, this isn't enough
 the remote repository.
 
 
-## Revert a change before commit
+## Back out a change before commit
 
 For an individual file:
 
@@ -94,6 +94,15 @@ Delete the most recent commit:
 Delete the most recent commit, but without destroying the work you've done:
 
 	git reset --soft HEAD~1
+
+
+## Revert a commit
+
+Revert an earlier commit by specifying its id:
+
+    git revert f04f02b
+
+Note that this makes a new commit.
 
 
 ## View commit log
