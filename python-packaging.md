@@ -73,6 +73,14 @@ So,
     install_requires=('numpy', 'netCDF4')  # bad!
 	install_requires=('netCDF4', 'numpy')  # good!
 
+### Command line scripts
+
+I've used command line scripts lately --
+both the `scripts` and `console_scripts` keywords to `setup`
+-- so I wanted to have this link handy:
+http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html.
+
+
 ## Pip
 
 Uninstall with `pip`:
