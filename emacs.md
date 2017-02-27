@@ -54,6 +54,17 @@ Better -- this also works for comment and uncomment:
 
 	M-;
 
+## Formatting code
+
+To format a line, use `C-M-q` or `Esc-q`.
+
+To format a region, use `C-M-\`. (Mapping issues on MacOS.)
+
+To format an entire buffer,
+I included a function in my **.emacs**,
+bound to `C-c f`.
+See https://www.emacswiki.org/emacs/ReformatBuffer.
+
 ## Moving between open buffers
 
 Cycle through open buffers with:
