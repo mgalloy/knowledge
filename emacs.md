@@ -32,6 +32,12 @@ I've installed:
 Sometimes the meta key `M` isn't mapped properly.
 Usually, you can fall back on using the `Esc` key instead.
 
+## List current keybindings
+
+List all the current keybindings in an Emacs session with:
+
+    M-x describe-bindings
+
 ## Commenting code
 
 To comment a highlighted region, use:
