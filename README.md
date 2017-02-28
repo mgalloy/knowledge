@@ -1,5 +1,4 @@
 # README
 
-This is my collected wisdom on the computing tools,
-frameworks, and operating systems that I use.
-
+This is my collected wisdom on the languages, tools, frameworks,
+and operating systems that I use.
