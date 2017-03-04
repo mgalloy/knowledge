@@ -1,4 +1,7 @@
-# Fortran 90/95
+# Fortran
+
+These notes are mainly for Fortran 90/95, and Fortran 2003 where specified.
+Fortran 77 is ingrained.
 
 
 ## References
@@ -42,3 +45,9 @@ rather than rewriting the routine to use an F90 module.
 
 So, a F90 interface isn't like what I think of
 an an interface, like in Java, for example.
+
+
+## Type-bound procedures
+
+Type-bound procedures are defined in Fortran 2003.
+See http://fortranwiki.org/fortran/show/Object-oriented+programming.
