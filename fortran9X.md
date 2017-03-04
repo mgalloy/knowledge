@@ -1,10 +1,13 @@
 # Fortran 90/95
 
+
 ## References
 
 * [Compact Fortran 95 Language Summary](https://www.csee.umbc.edu/~squire/fortranclass/summary.shtml) [umbc.edu].
-* [Fortran Best Practices](http://www.fortran90.org/src/best-practices.html) [fortran90.org]. This is good.
+* [Fortran Best Practices](http://www.fortran90.org/src/best-practices.html) [fortran90.org]. This is good. Despite the domain name, it's not an official web site.
 * http://www.cs.rpi.edu/~szymansk/OOF90/F90_Objects.html
+* https://github.com/Unidata/netcdf-fortran. See how the Unidata engineers build netCDF-Fortran. Or maybe not -- they use includes more than modules.
+
 
 ## Parlance
 
@@ -16,12 +19,16 @@
 * The pointer assignment operator is also `=>`. For example, `p => target`.
  * The pointer variable must have the `pointer` attribute.
  * The target variable must have the `target` attribute.
+* The equivalent of a C header file is a module.
 
-## Style
 
+## Variables
+
+* The maximum length of a variable name is 31 characters.
 * Use lower case for variable names, connected with underscores.
 
-## Notes
+
+## Interfaces
 
 An *interface* in F90 is defined (for example) in a main program
 to provide an explicit interface to a subprogram,
