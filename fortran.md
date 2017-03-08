@@ -1,12 +1,14 @@
 # Fortran
 
-These notes are mainly for Fortran 90/95, and Fortran 2003 where specified.
+These notes are mainly for Fortran 90/95,
+and for Fortran 2003 and 2008 where specified.
 Fortran 77 is ingrained.
 
 
 ## References
 
 * [Compact Fortran 95 Language Summary](https://www.csee.umbc.edu/~squire/fortranclass/summary.shtml) [umbc.edu].
+* [The GNU Fortran Compiler](https://gcc.gnu.org/onlinedocs/gfortran/) [gnu.org].
 * [Fortran Best Practices](http://www.fortran90.org/src/best-practices.html) [fortran90.org]. This is good. Despite the domain name, it's not an official web site.
 * http://www.cs.rpi.edu/~szymansk/OOF90/F90_Objects.html
 * https://github.com/Unidata/netcdf-fortran. See how the Unidata engineers build netCDF-Fortran. Or maybe not -- they use includes more than modules.
@@ -49,5 +51,25 @@ an an interface, like in Java, for example.
 
 ## Type-bound procedures
 
-Type-bound procedures are defined in Fortran 2003.
+Type-bound procedures,
+also known as procedure pointers,
+are defined in Fortran 2003.
 See http://fortranwiki.org/fortran/show/Object-oriented+programming.
+
+
+## Change rank of array while preserving reference
+
+This is used, for example, in BMI.
+
+F03 is needed for rank 1 to 2;
+see http://stackoverflow.com/a/5406261.
+F08 is needed for rank 2 to 1,
+along with the `contiguous` attribute;
+see http://stackoverflow.com/a/5406584.
+
+I have an example of this in my wunderkammer repo.
+Needs gfortran 4.6.
+
+Alternately, use the
+[iso_c_binding](https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fC_005fBINDING.html)
+module introduced in F03.
