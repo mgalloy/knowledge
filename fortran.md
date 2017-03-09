@@ -49,12 +49,13 @@ So, a F90 interface isn't like what I think of
 an an interface, like in Java, for example.
 
 
-## Type-bound procedures
+## Procedure pointers and type-bound procedures
 
-Type-bound procedures,
-also known as procedure pointers,
+Procedure pointers and type-bound procedures
 are defined in Fortran 2003.
-See http://fortranwiki.org/fortran/show/Object-oriented+programming.
+See ftp://ftp.nag.co.uk/sc22wg5/n1551-n1600/n1579.pdf,
+and to a lesser extent,
+http://fortranwiki.org/fortran/show/Object-oriented+programming.
 
 
 ## Change rank of array while preserving reference
