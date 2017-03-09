@@ -161,6 +161,14 @@ Here's the canonical test **index.html**:
     <html><body><h1>It works!</h1></body></html>
 
 
+## List shared libraries of an executable
+
+On Linux,
+the `ldd` command is used to list the shared libraries of an executable.
+On MacOS,
+the equivalent is `otool -L`.
+
+
 ## Running pyjs examples
 
 The stock pyjs examples can be executed from:
