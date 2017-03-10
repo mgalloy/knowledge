@@ -8,7 +8,7 @@ Fortran 77 is ingrained.
 ## References
 
 * [Compact Fortran 95 Language Summary](https://www.csee.umbc.edu/~squire/fortranclass/summary.shtml) [umbc.edu].
-* [The GNU Fortran Compiler](https://gcc.gnu.org/onlinedocs/gfortran/) [gnu.org].
+* [The GNU Fortran Compiler](https://gcc.gnu.org/onlinedocs/gfortran/) [gnu.org]. Includes a [list](https://gcc.gnu.org/onlinedocs/gfortran/Intrinsic-Procedures.html) of all the intrinsic functions.
 * [Fortran Best Practices](http://www.fortran90.org/src/best-practices.html) [fortran90.org]. This is good. Despite the domain name, it's not an official web site.
 * http://www.cs.rpi.edu/~szymansk/OOF90/F90_Objects.html
 * https://github.com/Unidata/netcdf-fortran. See how the Unidata engineers build netCDF-Fortran. Or maybe not -- they use includes more than modules.
@@ -74,3 +74,13 @@ Needs gfortran 4.6.
 Alternately, use the
 [iso_c_binding](https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fC_005fBINDING.html)
 module introduced in F03.
+
+
+## Classes in F03
+
+Here are a set of links that helped me understand how to write classes
+in F03.
+
+* http://fortranwiki.org/fortran/show/Factory+Pattern
+* http://fortranwiki.org/fortran/show/Decorator+Pattern
+* http://stackoverflow.com/a/25690402/1563298
