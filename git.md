@@ -425,6 +425,23 @@ run:
     $ git submodule init
 	$ git submodule update
 
+To pull in changes,
+change to the submodule directory and run:
+
+    $ git pull
+
+then change out of the submodule directory and run:
+
+    $ git commit
+
+to lock in changes.
+
+Add a new submodule to a repository with:
+
+    $ git submodule add https://github.com/csdms/bmi-fortran
+
+This will clone the repo and update the **.gitmodules** file.
+
 Moving a submodule is a [pain](http://stackoverflow.com/a/6310246/1563298). [stackoverflow.com]
 
 **Reference:**
