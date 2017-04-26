@@ -266,7 +266,7 @@ Count the number of commits the branch is ahead of master:
 See also **Rebase** below.
 
 
-## Stashing changes
+## Stash changes
 
 This is neat.
 I can stash changes I've made on a branch with:
@@ -303,7 +303,7 @@ Note that after the fetch,
 the name of the other branch still won't be shown.
 
 
-## Tagging a release
+## Tag a release
 
 Make sure all version strings match
 (e.g., in package definition, in conda recipe, in docs),
@@ -321,7 +321,7 @@ Push the tag to the remote:
 Note that Travis will start a build based on the new tag.
 
 
-## Keeping a feature branch in sync with the master branch
+## Keep a feature branch in sync with the master branch
 
 I have a repository,
 [csdms/component_metadata](https://github.com/csdms/component_metadata),
@@ -534,7 +534,7 @@ Also see [this](https://help.github.com/articles/syncing-a-fork)
 Github help article, "Syncing a fork".
 
 
-## Resolving conflicts
+## Resolve conflicts
 
 This is an expanded take on the process described
 in the **Pull request** section above.
@@ -552,7 +552,7 @@ in the **Pull request** section above.
 	$ git push origin :my-branch  # and on GitHub
 
 
-## Merging a fork with the master, I
+## Merge a fork with the master, I
 
 See these Github help articles:
 
@@ -582,7 +582,7 @@ as what Eric did; I'll check with him).
   repository `csdms/wmt` to merge into.) Better information follows.
 
 
-## Merging a fork with the master, II
+## Merge a fork with the master, II
 
 Use the
 [workflow](http://docs.astropy.org/en/stable/development/workflow/development_workflow.html)
@@ -667,7 +667,7 @@ $ git diff --stat 06ff4cdd0a581dd23f9a36e251709602c8f088dc
  4 files changed, 309 insertions(+)
 ```
 
-## Splitting a repository
+## Split a repository
 
 I want to split a subpath into a new repository. E.g., I have:
 
@@ -707,7 +707,7 @@ The example is for [storm](https://github.com/csdms-contrib/storm),
 which had an existing repo on GitHub.
 
 
-## Moving an issue across repos
+## Move an issue across repos
 
 This is a GitHub, not a git, thing, but nevertheless, use
 [https://github-issue-mover.appspot.com/](https://github-issue-mover.appspot.com/).
