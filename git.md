@@ -449,6 +449,30 @@ Moving a submodule is a [pain](http://stackoverflow.com/a/6310246/1563298). [sta
 * [https://git-scm.com/book/en/v2/Git-Tools-Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 
+## Move pushed commits to a new branch
+
+Several commits
+that should have undergone review in a pull request
+had been pushed into the `master` branch of a repository.
+Here's how I extracted them into a new topic branch:
+
+    $ git clone git@github.com:permamodel/permamodel.git
+	$ git branch wk1984/add-ku-model-geo
+	$ git reset --hard 494e9a8  # this is where I want HEAD
+	$ git checkout wk1984/add-ku-model-geo
+
+Then I pushed both branches:
+
+    $ git push origin wk1984/add-ku-model-geo
+	$ git checkout master
+	$ git push origin master --force
+
+The master branch is now back at the point in history before
+the errant commits,
+and the topic branch `wk1984/add-ku-model-geo`
+can be made into a pull request.
+
+
 ## Pull request
 
 I wanted to merge `csdms/wmt` into my forked version `mdpiper/wmt`,
