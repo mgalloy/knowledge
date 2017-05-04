@@ -266,6 +266,14 @@ Count the number of commits the branch is ahead of master:
 See also **Rebase** below.
 
 
+## Diff a file across branches
+
+I want to see changes that were made to a file in a branch.
+I can compare it with the version in the master branch with:
+
+    $ git diff mdpiper/prep-for-componentization master -- parameters.yaml
+
+
 ## Stash changes
 
 This is neat.
