@@ -266,6 +266,15 @@ Count the number of commits the branch is ahead of master:
 See also **Rebase** below.
 
 
+## Change the name of a branch
+
+From within the branch, use:
+
+    $ git branch -m <newname>
+
+The "m" is for move.
+
+
 ## Diff a file across branches
 
 I want to see changes that were made to a file in a branch.
