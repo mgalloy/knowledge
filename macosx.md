@@ -29,6 +29,14 @@ Installed:
 * `wget`
 * `pandoc`
 
+To completely remove Homebrew, execute:
+
+```
+$ brew remove --force $(brew list)
+$ brew cleanup -s
+$ rm -rf $(brew --cache)
+```
+
 ## Switch between desktops
 
 I've mapped the keyboard shortcuts `<Ctrl>-<right arrow>` and
