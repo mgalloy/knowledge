@@ -89,6 +89,7 @@ The files are located at **river:/data/ftp/pub/users/wmt**.
 1. Call `ant` to build WMT:
 
         $ ant build
+        $ /usr/local/opt/ant@1.9/bin/ant build  # needed on solaria; 2017-07-24
 
 1. Sync the resulting **war/** directory (war = "web archive") with
    that in my home directory on ***river***:
