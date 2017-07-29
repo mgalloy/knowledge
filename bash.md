@@ -329,3 +329,29 @@ then, when the script exits (successfully or not),
 the command `rm -rf working` is executed.
 
 Reference: http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_12_02.html.
+
+
+## Reset hash table
+
+Bash maintains a table of recently used commands and their locations.
+The `hash` command lists it:
+
+```
+$ hash
+hits    command
+   7    /usr/bin/git
+   1    /bin/rm
+   1    /usr/bin/sudo
+   5    /bin/ls
+   1    /Applications/anaconda2/bin/clear
+```
+
+Bash hashes this table to find a command
+instead than searching the path.
+
+If I install software that changes the location of a command,
+I want bash to find it in its new location,
+not the location given in the table.
+Reset the hash table with
+
+    $ hash -r
