@@ -329,7 +329,7 @@ and push changes.
 
 Create a tag for the release that starts with "v"; e.g.:
 
-    git tag v0.2.1
+    git tag v0.2.1 -m 'Optionally add a message'
 
 Push the tag to the remote:
 
