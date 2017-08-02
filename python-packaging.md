@@ -108,12 +108,26 @@ as an example.
 
 The [Python Package Index](https://pypi.python.org/pypi) (PyPI)
 allows public access to a package through `pip`.
-I used instructions from
-[this](http://peterdowns.com/posts/first-time-with-pypi.html) blog post
-to publish a [package](https://pypi.python.org/pypi/basic-modeling-interface)
-on PyPI.
-[Here's](https://docs.python.org/2/distutils/packageindex.html)
-the offical documentation.
+
+As of August 2017,
+there's a new API and URL for PyPI: https://pypi.org.
+Uploading is going through a transition.
+
+Need to install [twine](https://pypi.python.org/pypi/twine):
+
+    pip install twine
+
+then build a tarball for the package:
+
+    python setup.py sdist
+
+and upload the package to PyPI:
+
+    twine upload dist/* --repository-url=https://upload.pypi.org/legacy/
+
+PyPI will prompt for username and password.
+Registering will be necessary the first time a package is uploaded.
+See the `twine` docs for infomation.
 
 
 ## Virtualenv
