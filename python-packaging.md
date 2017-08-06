@@ -81,6 +81,22 @@ both the `scripts` and `console_scripts` keywords to `setup`
 http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html.
 
 
+## Versioning
+
+[PEP 396](http://legacy.python.org/dev/peps/pep-0396/)
+discusses standard conventions for versioning
+a Python module or package.
+It's marked as deferred, however.
+
+There are several good ideas in
+[this](https://packaging.python.org/guides/single-sourcing-package-version/)
+[python.org] guide.
+I've used a version module
+(like numpy does)
+in some packages I've written
+(e.g., [bmi_ilamb](https://github.com/permamodel/bmi-ilamb/blob/master/bmi_ilamb/version.py)).
+
+
 ## Pip
 
 Uninstall with `pip`:
