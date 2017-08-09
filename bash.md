@@ -97,6 +97,18 @@ Recursively create subdirectories with the `-p` flag:
 Don't include spaces between the comma-delimited subdirectories!
 
 
+## Diff with color
+
+The standard bash `diff` command doesn't have a color option,
+at least with the older versions of bash I use; e.g., on ***beach***.
+Use `git diff` instead:
+
+    $ git diff bmi_ilamb.yaml bmi_ilamb.yaml.0
+
+This command will work even outside of a git repo.
+(Tested on ***beach***.)
+
+
 ## Exclude from directory listing
 
 Say I want to exclude all files and and directories that begin with "step"
