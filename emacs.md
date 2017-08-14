@@ -99,6 +99,21 @@ and a particular line number:
 
     M-g g <number>
 
+
+## Return to previous location in file
+
+At the desired line,
+set a mark and deactivate it:
+
+    C-Space C-Space
+
+Go somewhere else.
+
+Return to the marked location with:
+
+    C-u C-Space
+
+
 ## Search and replace
 
 Perform an interactive search and replace with
