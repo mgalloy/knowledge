@@ -36,9 +36,9 @@ The drive is automounted as **/nas/data**,
 and is available from the head and compute nodes.
 
 
-## River (webserver)
+## Diluvium (webserver; formaerly River)
 
-The docroot on ***river*** is **/data/web/htdocs/csdms**.
+The docroot on ***diluvium*** is **/data/web/htdocs/csdms**.
 
 Webserver logs are found in **/usr/local/adm/config/apache/logs**.
 In particular, `tail`
@@ -54,6 +54,16 @@ Restart the CSDMS web server with
 
 My FTP directory on ***river*** is **/data/ftp/pub/users/mapi8888**.
 Users can access this site [here](http://csdms.colorado.edu/pub/users/mapi8888/).
+
+CSDMS has a THREDDS server at http://csdms.colorado.edu/thredds/catalog.html.
+Data can be added to existing directories at **/data/thredds/public**.
+If a new directory is made,
+it needs to be entered in the TDS configuration file,
+**/usr/local/adm/config/tomcat/content/thredds/catalog.xml**,
+and the Apache Tomcat server needs to be restarted with
+
+    $ sudo /etc/init.d/tomcat stop
+	$ sudo /etc/init.d/tomcat start
 
 
 ## WMT client and server location
