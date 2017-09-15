@@ -378,9 +378,10 @@ and edited them to use the new execution server path.
 To run a simulation from the command line on the executor,
 use:
 ```
-$ wmt-slave 21f612d4-0501-44ba-9cc5-da2329f928ce --server-url=https://csdms.colorado.edu/wmt/api-testing
+$ wmt-slave <uuid> --server-url=https://csdms.colorado.edu/wmt/api-testing
 ```
-where the simulation id could come, for example,
-from a simulation previously run in the client.
+The output from the run will be in **~/.wmt/<uuid>**.
 
-
+This is particularly helpful for debugging.
+Console output (standard output and standard error)
+from the run is logged in **~/.wmt/<uuid>/stdout**.
