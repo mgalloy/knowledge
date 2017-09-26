@@ -385,3 +385,34 @@ The output from the run will be in **~/.wmt/<uuid>**.
 This is particularly helpful for debugging.
 Console output (standard output and standard error)
 from the run is logged in **~/.wmt/<uuid>/stdout**.
+
+
+## Installing JupyterHub on ***siwenna***
+
+Following installation instructions at
+https://github.com/jupyterhub/jupyterhub.
+
+Use Python 3 in **~/anaconda3**.
+
+Install `npm`.
+
+    sudo yum install npm
+
+This also installs the `node` executable.
+
+Install HTTP proxy and dependencies.
+
+    sudo npm install -g inherits@'2'
+	sudo npm install -g configurable-http-proxy
+
+Install JupyterHub.
+
+    pip install jupyterhub
+
+This also retrieved and installed some dependencies.
+
+Install Jupyter Notebook.
+
+    pip install --upgrade notebook
+
+This installed a slew of dependencies.
