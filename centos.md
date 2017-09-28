@@ -98,6 +98,18 @@ I disabled stoopid SELinux:
 edit **/etc/sysconfig/selinux**.
 
 
+### Setting up HTTPS
+
+See instructions at:
+
+* https://wiki.centos.org/HowTos/Https
+
+Make sure the old **ca.*** files are replaced.
+
+Chrome, e.g., complains about the certificate,
+but it works: https://siwenna.colorado.edu.
+
+
 ## Firewall
 
 CentOS 6 uses `iptables` to configure and manage its firewall.
