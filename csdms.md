@@ -396,6 +396,8 @@ Use Python 3 in **/usr/local/anaconda3**.
 
     PATH=/usr/local/anaconda3/bin:$PATH
 
+(I added this to the **.bash_profile** of root.)
+
 Install `npm` and `nodejs`.
 
     sudo yum install npm nodejs
@@ -422,12 +424,17 @@ This installed a slew of dependencies.
 
 ## Configuring and running JupyterHub on ***siwenna***
 
+The
+[Getting Started](https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html)
+document for version 0.7.2 (installed on ***siwenna***)
+was very helpful.
+
 As a test, run JupyterHub as a (nonpriviledged) single-user server.
 
     jupyterhub
 
 Now, from a browser running locally on ***siwenna***,
-I can log in as me at http://127.0.0.1:8000
+I can log in with my PAM credentials at http://127.0.0.1:8000
 and get a Jupyter Notebook.
 
 To allow others to log in,
@@ -435,7 +442,6 @@ run JupyterHub as root.
 Executing
 
     $ su -
-	# PATH=/usr/local/anaconda3/bin:$PATH  # add to .bash_profile
     # jupyterhub --ip 128.138.87.12 --debug
 
 allows me to log in
@@ -453,35 +459,38 @@ Executing
 
 allows me to log in
 at https://siwenna.colorado.edu:8000,
-although the user has to accept my hinky, self-generated, certificate.
+although the user has to accept my hinky, self-generated, certificate,
+and they can no longer access the site via HTTP.
 Yay!
 
+Use a JupyterHub configuration file
+instead of command line args.
+Create a config file with
 
-### Notes to process
+    jupyterhub --generate-config
 
-There was complaining about blah blah.
-Set:
+Install a cookie secret file in **/srv/jupyterhub** with
 
-    export CONFIGPROXY_AUTH_TOKEN=`openssl rand -hex 32`
+    openssl rand -base64 2048 > /srv/jupyterhub/cookie_secret
 
-I'm not sure, but this may have to be done before starting the first time.
+and add this to the `cookie_secret_file` attribute
+of the config file.
+Be sure to set permissions of 600 (u=rw) on this file.
+
+Generate a 32-character hex string with `openssl`
+to use as the proxy authentication token.
+Set it as the `proxy_auth_token` attribute of the config file.
+
+Place **jupyterhub_config.py** in **/etc/jupyterhub**
+and call JupyterHub with
+
+    # jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
 
 
-
----
-
-The
-[Getting Started](https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html)
-document for version 0.7.2.
-
-
-Place **jupyterhub_config.py** in **/etc/jupyterhub**.
-
-    sudo /usr/local/anaconda3/bin/jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
-
-Think about:
+### Think about
 
 * Can I start JupyterHub as a service when ***siwenna*** starts?
+See https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-service.
 * It would be great to use the
 [OAuthenticator](https://github.com/jupyterhub/oauthenticator)
 so that people could log in with, e.g.,
