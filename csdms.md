@@ -495,3 +495,5 @@ See https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-ser
 [OAuthenticator](https://github.com/jupyterhub/oauthenticator)
 so that people could log in with, e.g.,
 their GitHub or Google (or CSDMS!) credentials.
+* Can a maximum number of users be set?
+* Can we logout/cull inactive users?
