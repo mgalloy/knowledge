@@ -497,3 +497,70 @@ so that people could log in with, e.g.,
 their GitHub or Google (or CSDMS!) credentials.
 * Can a maximum number of users be set?
 * Can we logout/cull inactive users?
+
+
+## Installing JupyterHub on ***diluvium***
+
+Following installation instructions at
+https://github.com/jupyterhub/jupyterhub.
+Note that, unless notes, all commands are executed as me.
+
+Install Python 3 in **/data/anaconda3**.
+
+    chmod +x Anaconda3-4.4.0-Linux-x86_64.sh
+    sudo ./Anaconda3-4.4.0-Linux-x86_64.sh -b -p /data/anaconda3
+
+Download Node.js binary (LTS)
+from https://nodejs.org/en/download/,
+uncompress,
+place in **/data/node-v6.11.4-linux-x64**,
+and create a symlink, `node.js`, to it.
+This gives us both `node` and `npm`.
+
+Update path with
+
+    PATH=/data/anaconda3/bin:/data/node.js/bin:$PATH
+
+Install the proxy server with
+
+    npm install -g configurable-http-proxy
+
+Install JupyterHub (v0.8) with
+
+    pip install jupyterhub
+
+This also installed several dependencies.
+
+Upgrade the `notebook` package:
+
+    pip install --upgrade notebook
+
+This also installed several dependencies.
+
+Started the Hub server for myself:
+
+    jupyterhub
+
+Using a browser on ***diluvium***,
+I can log into http://localhost:8000
+with my PAM credentials.
+
+Using `iptables`, I opened port 8000.
+
+    sudo iptables -I INPUT 29 -p tcp --dport 8000 -j ACCEPT
+    sudo /sbin/service iptables save
+
+Now, when running as a privileged user
+
+    sudo /data/anaconda3/bin/jupyterhub --ip 128.138.70.88 --debug
+
+I can access http://csdms.colorado.edu:8000 externally.
+(Note that the IP address 128.138.70.87
+corresponds to diluvium.colorado.edu.
+We wish to run through csdms.colorado.edu.)
+
+With some sleuthing,
+I found the TLS certs on ***diluvium***,
+so I can use HTTPS with
+
+    sudo /data/anaconda3/bin/jupyterhub --ip 128.138.70.88 --ssl-key /usr/local/adm/config/openssl/certs/key/csdms.colorado.edu.key --ssl-cert /usr/local/adm/config/openssl/certs/crt/csdms.colorado.edu.crt --debug
