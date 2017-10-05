@@ -17,9 +17,9 @@ Also:
 >>> import this
 ```
 
-Check for style errors with `pep8`:
+Check for style errors with `flake8`:
 
-    $ pep8 foo.py
+    $ flake8 foo.py
 
 
 Program types
