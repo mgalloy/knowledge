@@ -174,7 +174,7 @@ Here's the canonical test **index.html**:
 On Linux,
 the `ldd` command is used to list the shared libraries of an executable.
 On MacOS,
-the equivalent is `otool -L`.
+the equivalent is `otool -L`. Of course, this works to find the dependent shared libraries of a shared library as well. Furthermore, use `nm` (on both Linux and Mac OS X) to find the symbols defined or used in a shared library.
 
 
 ## Running pyjs examples
