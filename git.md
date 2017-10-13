@@ -28,11 +28,11 @@ Set the editor (if different from default in shell):
 
 Why does Github repeatedly ask for my username and password?
 Because I'm using an [HTTPS remote URL](https://help.github.com/articles/why-is-git-always-asking-for-my-password).
-I have the option to set up [password caching](https://help.github.com/articles/set-up-git#password-caching).
+I have the option to set up [password caching](https://help.github.com/articles/set-up-git#password-caching), but I should really be using [ssh keys](https://help.github.com/articles/connecting-to-github-with-ssh/).
 
 ## Clone
 
-To clone a repository to my computer, use the `https` protocol:
+To clone a repository to my computer, use either the `https` protocol:
 
 	$ git clone https://github.com/mdpiper/wmt.git
 
@@ -40,7 +40,11 @@ which requires credentials on each push, or use the `git` protocol:
 
 	$ git clone git://github.com/mdpiper/wmt.git wmt-mpiper	
 
-which doesn't allow push (i.e., it's read-only).
+which doesn't allow push (i.e., it's read-only), or the `git@github.com` protocol:
+
+        $ git clone git@github.com:mdpiper/wmt.git wmt-mpiper
+
+which uses ssh keys for authentication.
 
 A directory is created locally with the name of the clone.
 This is the _working directory_.
